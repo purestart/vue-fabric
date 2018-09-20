@@ -26,11 +26,13 @@ Vue.use(Fabric);
 #### Props
 | Name              | Type               | Default             | Description                                         |
 | ----------------| ---------------- | ---------------| ------------------------------------------|
-| width             | Number            |  ''                | canvas width    |
-| height				| Number		| ''               | canvas height |
+| width             | Number            |  0                | canvas width    |
+| height				| Number		|  0               | canvas height |
 
 
 ## Function
+--方法调用
+--this.$refs.canvas.方法名(params)
 #### createImage(url,options) 绘制图片
 | params              | Type             | Description                                         |
 | ----------------| ----------------| ------------------------------------------|
@@ -76,6 +78,54 @@ Vue.use(Fabric);
 | radius             | Number            | 圆形半径 |
 
 
+#### setRotate(angle) 旋转选中元素
+| params              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| angle             | Number            | 旋转角度    |
+
+#### setBackgroundImage(url) 设置画布背景图片
+| params              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| url             | String            | 背景图片Url    |
+
+#### renderAll() 重新渲染画布
+
+#### setBackgroundColor(color) 设置画布背景颜色
+| params              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| color             | String            | 背景颜色    |
+
+#### toggleMirror() 设置图片元素镜像翻转
+
+#### toNextLayer() 设置当前选中画布到下一层
+
+#### toLastLayer() 设置当前选中画布到上一层
+
+#### toBottomLayer() 设置当前选中画布到底层
+
+#### toTopLayer() 设置当前选中画布到顶层
+
+#### getObjects() 获取当前画布上的所有元素对象
+
+#### clear() 清除当前画布上的所有元素对象
+
+#### toDataUrl() 返回当前画布的base64图片
+
+#### toJson() 返回当前画布的json对象
+
+#### loadFromJSON(json,cb) 从json对象中加载画布数据
+| params              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| json             | Object            | json对象    |
+| cb             | Function            | 加载完成回调函数    |
+
+#### toSvg() 返回当前画布的svg图片
+
+#### removeCurrentObj() 删除当前选中对象
+
+#### getEditObj() 返回当前选中对象，并不在画布上显示，用于编辑当前元素
+
+#### setEditObj(obj) 设置添加对象到画布
 
 ## Changelog
 ### 2018.8.26
