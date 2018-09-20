@@ -261,7 +261,7 @@
             this.canvas.add(text);
             this.canvas.renderAll();
         },
-        createImage(url){
+        createImage(url,options){
             let canvas=this.canvas;
 
             let that=this;
@@ -303,8 +303,22 @@
                 console.log(width);
                 console.log(height);
 
+                if(options.width){
+                    width=options.width;
+                }
+                if(options.height){
+                    height=options.height;
+                }
+
                 let leftP=that.width/2;
                 let topP=that.height/2;
+
+                if(options.left){
+                    leftP=options.left;
+                }
+                if(options.topP){
+                    topP=options.top;
+                }
                 
                 img.set({
                     id: 'cat',

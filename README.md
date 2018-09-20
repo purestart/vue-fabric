@@ -30,6 +30,14 @@ Vue.use(Fabric);
 | height				| Number		| ''               | canvas height |
 
 
+## Function
+####createImage
+| params              | type             | Description                                         |
+| ----------------| ---------------| ------------------------------------------|
+| url           |       String          | image url    |
+| options		  | Object               | width,height,left,top |
+
+
 ## Changelog
 ### 2018.8.26
 > v0.1.4 * 初始化组件库
