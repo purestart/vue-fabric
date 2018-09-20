@@ -303,20 +303,20 @@
                 console.log(width);
                 console.log(height);
 
-                if(options.width){
+                if(options && options.width){
                     width=options.width;
                 }
-                if(options.height){
+                if(options && options.height){
                     height=options.height;
                 }
 
                 let leftP=that.width/2;
                 let topP=that.height/2;
 
-                if(options.left){
+                if(options && options.left){
                     leftP=options.left;
                 }
-                if(options.topP){
+                if(options && options.topP){
                     topP=options.top;
                 }
                 

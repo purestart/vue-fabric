@@ -1,16 +1,6 @@
 <template>
   <div class="home-container">
-    <!-- <div class="Header">图片预览组件</div>
-
-    <div class="item-wrapper">
-       <div class="item-image">
-         <ap-image :showClose="false" :thumb="imgUrl" :radius="3" :full="imgUrl" :maxWidth="300"></ap-image>
-       </div>
-       <div class="item-right">
-          <div style="font-size:3.6vw;">新闻标题图片预览组件</div>
-          <div style="font-size:3.4vw;color:#777;">描述</div>
-       </div>
-    </div> -->
+    <!-- <div class="Header">图片预览组件</div> -->
     <toolbar :handleDelete="handleDelete" :rotate="handleRotate"></toolbar>
     <vue-fabric ref="canvas" :width="width" :height="height"></vue-fabric>
     <image-list :handleAdd="handleAdd"></image-list>

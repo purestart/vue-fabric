@@ -52,6 +52,14 @@ Vue.use(Fabric);
 | height             | Number            | Rect height |
 | fillColor             | String            | Rect fillColor |
 
+
+#### createLine(x,y,x1,y1,fillColor,strokeColor) 绘制直线
+| params              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| x,y,x1,y1             | Number            | line points,直线两点坐标    |
+| fillColor             | String            | fillColor 填充颜色 |
+| strokeColor             | String            | strokeColor 绘制颜色 |
+
 ## Changelog
 ### 2018.8.26
 > v0.1.4 * 初始化组件库
