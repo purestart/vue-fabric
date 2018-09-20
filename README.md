@@ -31,12 +31,26 @@ Vue.use(Fabric);
 
 
 ## Function
-####createImage
+#### createImage 绘制图片
 | params              | Type             | Description                                         |
-| ----------------| ---------------| ------------------------------------------|
+| ----------------| ----------------| ------------------------------------------|
 | url             | String            | image url    |
 | options             | Object            | width,height,left,top |
 
+#### createTextbox 绘制文本
+| params              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| text             | String            | text content    |
+| options             | Object            | width,left,top,fill,fontSize, |
+
+#### createRect 绘制矩形
+| params              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| left             | Number            | left    |
+| top             | Number            | top |
+| width             | Number            | Rect width    |
+| height             | Number            | Rect height |
+| fillColor             | String            | Rect fillColor |
 
 ## Changelog
 ### 2018.8.26

@@ -248,15 +248,15 @@
             this.canvas.add(ellipse);
             this.canvas.renderAll(); 
         },
-        createText(text,option){
+        createText(text,options){
 
             var text = new fabric.Text(text, { left: 100, top: 100 });
             this.canvas.add(text);
             this.canvas.renderAll();
         },
-        createTextbox(text,option){
+        createTextbox(text,options={fontSize:14,fill:'#000000'}){
 
-            var text = new fabric.Textbox(text, { left: 100, top: 100 ,width:400,fontSize:14,fill:"red"});
+            var text = new fabric.Textbox(text, { left: options.left, top: options.top ,width:options.width,fontSize:options.fontSize,fill:options.fill});
             console.log(text);
             this.canvas.add(text);
             this.canvas.renderAll();
