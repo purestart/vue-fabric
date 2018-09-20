@@ -32,10 +32,10 @@ Vue.use(Fabric);
 
 ## Function
 ####createImage
-| params              | type             | Description                                         |
+| params              | Type             | Description                                         |
 | ----------------| ---------------| ------------------------------------------|
-| url           |       String          | image url    |
-| options		  | Object               | width,height,left,top |
+| url             | String            | image url    |
+| options             | Object            | width,height,left,top |
 
 
 ## Changelog
