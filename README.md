@@ -31,8 +31,8 @@ Vue.use(Fabric);
 
 
 ## Function
---方法调用
---this.$refs.canvas.方法名(params)
+-方法调用
+-this.$refs.canvas.方法名(params)
 #### createImage(url,options) 绘制图片
 | params              | Type             | Description                                         |
 | ----------------| ----------------| ------------------------------------------|
