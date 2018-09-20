@@ -10,8 +10,8 @@ npm install vue-fabric --save
 下载[customiseControls.min.js](https://github.com/purestart/vue-fabric/blob/master/static/js/customiseControls.min.js).和 [fabric.min.js](https://github.com/purestart/vue-fabric/blob/master/static/js/fabric.min.js).到本地static/js/文件下
     
     本地项目index.html引入
-    <script type="text/javascript" src="./static/js/fabric.js"></script>
-    <script type="text/javascript" src="./static/js/customiseControls.js"></script>
+    <script type="text/javascript" src="./static/js/fabric.min.js"></script>
+    <script type="text/javascript" src="./static/js/customiseControls.min.js"></script>
 
 ## Import
 ```
