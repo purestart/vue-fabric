@@ -22,6 +22,14 @@ Vue.use(Fabric);
  <vue-fabric ref="canvas" :width="width" :height="height"></vue-fabric>
 ```
 
+## Usage
+#### Props
+| Name              | Type               | Default             | Description                                         |
+| ----------------| ---------------- | ---------------| ------------------------------------------|
+| width             | Number            |  ''                | canvas width    |
+| height				| Number		| ''               | canvas height |
+
+
 ## Changelog
 ### 2018.8.26
 > v0.1.4 * 初始化组件库
