@@ -207,21 +207,29 @@
             this.canvas.add(rect);
             this.canvas.renderAll();
         },
-        createCircle(radius,fillColor,left=50,top=50){
-            let Circle= new fabric.Circle({
-                left:left,//距离画布左侧的距离，单位是像素
-                top:top,//距离画布上边的距离
-                fill:fillColor,//填充的颜色
-                radius: radius //半径
-            });
+        createCircle(options){
+            let defaultOption={
+                left:50,//距离画布左侧的距离，单位是像素
+                top:50,//距离画布上边的距离
+                radius:30, //半径
+            }
+            defaultOption=Object.assign(defaultOption,options);
+
+            let Circle= new fabric.Circle(defaultOption);
             this.canvas.add(Circle);
             this.canvas.renderAll();
 
         },
-        createTriangle(width,height,fillColor,left=50,top=50){
-            let triangle = new fabric.Triangle({
-                    width: width, height: height, fill: fillColor, left: 50, top: 50
-                });
+        createTriangle(options){
+            let defaultOption={
+                left:50,top:50,width:50,height:80,fill:'red'
+            };
+
+            defaultOption=Object.assign(defaultOption,options);
+
+            console.log(defaultOption);
+
+            let triangle = new fabric.Triangle(defaultOption);
             this.setContronVisibility(triangle);
             this.canvas.add(triangle);
             this.canvas.renderAll();

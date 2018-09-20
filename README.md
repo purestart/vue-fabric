@@ -60,6 +60,23 @@ Vue.use(Fabric);
 | fillColor             | String            | fillColor 填充颜色 |
 | strokeColor             | String            | strokeColor 绘制颜色 |
 
+#### createTriangle(options) 绘制三角形
+| options              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| left,top             | Number            | position 位置    |
+| fill             | String            | fillColor 填充颜色 |
+| width             | Number            | 三角形底边宽度 |
+| height             | Number            | 三角形高 |
+
+#### createCircle(options) 绘制圆
+| options              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| left,top             | Number            | position 位置    |
+| fill             | String            | fillColor 填充颜色 |
+| radius             | Number            | 圆形半径 |
+
+
+
 ## Changelog
 ### 2018.8.26
 > v0.1.4 * 初始化组件库

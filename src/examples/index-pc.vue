@@ -69,7 +69,8 @@
         
     },
     mounted () {
-            this.$refs.canvas.createTriangle(40,40,'yellow');
+            this.$refs.canvas.createTriangle({width:40,height:40,fill:'yellow',left:80});
+
             this.$refs.canvas.createImage('/static/images/sticker1.png');
             this.$refs.canvas.createImage('/static/images/sticker2.png');
             this.$refs.canvas.createImage('/static/images/sticker3.png');
