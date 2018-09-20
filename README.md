@@ -31,7 +31,7 @@ Vue.use(Fabric);
 
 
 ## Function
-####createImage
+#### createImage
 | params              | Type             | Description                                         |
 | ----------------| ----------------| ------------------------------------------|
 | url             | String            | image url    |
