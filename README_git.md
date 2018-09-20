@@ -9,13 +9,13 @@ Vue组件，vue-fabric组件 ，fabric组件，绘图板，图片组合组件
 
 #### 安装教程
 
-    npm install auto-preview-image --save
+    npm install vue-fabric --save
 
 #### 使用说明
 
     在main.js中
-    import 'auto-preview-image/dist/auto-preview-image.min.css';
-    import { ApImage } from 'auto-preview-image';
+    import 'vue-fabric/dist/vue-fabric.min.css';
+    import { ApImage } from 'vue-fabric';
     Vue.use(ApImage);
 
     页面中使用

@@ -25,9 +25,91 @@
       }
     },
     created () {
+        
     },
-    mounted () {            
-        this.canvas =new fabric.Canvas('canvas');
+    mounted () {
+        
+        fabric.Canvas.prototype.customiseControls({
+        tl: {
+            action: 'scale',
+            // cursor: '/static/images/dot-circle.png',
+        },
+        tr: {
+            action: 'scale',
+        },
+        bl: {
+            action: 'scale',
+            cursor: 'pointer',
+        },
+        br: {
+            action: 'scale',
+            cursor: 'pointer',
+        },
+        mb: {
+            action: 'scale',
+            cursor: 'pointer',
+        },
+        // mr: {
+        //     // action: function(e, target) {
+        //     //     target.set({
+        //     //         left: 200,
+        //     //     });
+        //     //     canvas.renderAll();
+        //     // },
+        //     action: 'scale',
+        //     cursor: 'pointer',
+        // },
+        mt: {
+            action: {
+                'rotateByDegrees': 30,
+            },
+            cursor: 'pointer',
+        },
+        // only is hasRotatingPoint is not set to false
+        mtr: {
+            action: 'rotate',
+            // cursor: '/static/images/cow.png',
+        },
+        });
+
+
+         // basic settings
+    fabric.Object.prototype.customiseCornerIcons({
+        settings: {
+             borderColor: '#e4e4e4',
+            cornerSize: 25,
+            cornerShape: 'circle',
+            
+            cornerBackgroundColor: '#ffffff',
+        },
+        tl: {
+            icon: '/static/images/dot-circle.png',
+        },
+        tr: {
+            icon: '/static/images/dot-circle.png',
+        },
+        bl: {
+            icon: '/static/images/dot-circle.png',
+        },
+        br: {
+            icon: '/static/images/dot-circle.png',
+        },
+        ml: {
+            icon: '/static/images/dot-circle.png',
+        },
+        mr: {
+            icon: '/static/images/dot-circle.png',
+        },
+        // only is hasRotatingPoint is not set to false
+        mtr: {
+            icon: '/static/images/rotate-mdr.png',
+        },
+        }, function() {
+            canvas.renderAll();
+        });
+
+
+        this.canvas =new fabric.Canvas('canvas',{ preserveObjectStacking: true });
         //this.createRect();
         let canvas=this.canvas;
 
@@ -38,10 +120,21 @@
 
         let that=this;
 
+        this.canvas.controlsAboveOverlay=false;
+        this.canvas.skipOffscreen=true;
+
+        //this.drawControls();
+
         this.canvas.on('object:selected', function (options) {
             //alert(String(options.target.type));
-            console.log(options.target);
-            that.currentObj=options.target;
+            //console.log(options.target);
+           // that.currentObj=options.target;
+
+            //console.log(options.target.getElement());
+            
+                
+            that.canvas.renderAll()
+
             //canvas.remove(this.currentObj)
         });
     },
@@ -52,12 +145,43 @@
             console.log(obj);
             
             this.canvas.remove(obj);
+            this.canvas.renderAll();
         },
-        setRotate(){
+        getEditObj(){
+            let obj=this.canvas.getActiveObject();
+            this.removeCurrentObj();
+            return obj;
+        },
+        setEditObj(obj){
+            this.canvas.add(obj);
+            this.canvas.renderAll();
+        },
+        setRotate(deg=36){
             let obj=this.canvas.getActiveObject();
             console.log(obj);
+            //let skewX=obj.skewX;
             let angle=obj.angle;
-            obj.rotate(angle+36);
+             obj.rotate(angle+deg);
+
+            //let matrix=obj.calcTransformMatrix(true);
+            //console.log(matrix);
+
+            //let coords= obj.getCoords();
+           // console.log(coords[0].x);
+            
+
+            //let src=obj.getSrc();
+
+           // console.log(src)
+
+            //let src=this.toDataUrl();
+
+            // obj.setSrc(src,()=>{
+            //     this.canvas.renderAll();
+            // },{});
+            
+            
+            //obj.skewX=skewX+36;
             this.canvas.renderAll();
         },
         moveTo(){
@@ -81,6 +205,7 @@
                 height:height//方形的高度
             });
             this.canvas.add(rect);
+            this.canvas.renderAll();
         },
         createCircle(radius,fillColor,left=50,top=50){
             let Circle= new fabric.Circle({
@@ -89,20 +214,25 @@
                 fill:fillColor,//填充的颜色
                 radius: radius //半径
             });
+            this.canvas.add(Circle);
+            this.canvas.renderAll();
 
         },
         createTriangle(width,height,fillColor,left=50,top=50){
             let triangle = new fabric.Triangle({
                     width: width, height: height, fill: fillColor, left: 50, top: 50
                 });
+            this.setContronVisibility(triangle);
             this.canvas.add(triangle);
+            this.canvas.renderAll();
         },
         createLine(x,y,x1,y1,fillColor,strokeColor){
             let line = new fabric.Line([x, y, x1, y1], {
                     fill: fillColor,
                     stroke: strokeColor
                 });
-            this.canvas.add(line);    
+            this.canvas.add(line); 
+            this.canvas.renderAll();   
         },
         createEllipse(rx,ry,fillColor,angle,strokeColor,strokeWidth=3,left=50,top=50){
             var ellipse = new fabric.Ellipse({
@@ -115,10 +245,26 @@
                     left: left,
                     top: top
                 });
-            this.canvas.add(ellipse);        
+            this.canvas.add(ellipse);
+            this.canvas.renderAll(); 
+        },
+        createText(text,option){
+
+            var text = new fabric.Text(text, { left: 100, top: 100 });
+            this.canvas.add(text);
+            this.canvas.renderAll();
+        },
+        createTextbox(text,option){
+
+            var text = new fabric.Textbox(text, { left: 100, top: 100 ,width:400,fontSize:14,fill:"red"});
+            console.log(text);
+            this.canvas.add(text);
+            this.canvas.renderAll();
         },
         createImage(url){
             let canvas=this.canvas;
+
+            let that=this;
             
             fabric.Image.fromURL(url, function(img) {
                 //添加过滤器
@@ -126,11 +272,13 @@
                 //应用过滤器并重新渲染画布执行
                 //img.applyFilters(canvas.renderAll.bind(canvas));
                 console.log(img);
+                let maxWidth=that.width/2;
+
                 let width=0;
                 let height=0;
                 if(img.width>img.height){
-                    if(img.width>100){
-                        width=100;
+                    if(img.width>maxWidth){
+                        width=maxWidth;
                         height=(img.height/img.width)*width;
                     }else{
                         width=img.width;
@@ -138,8 +286,8 @@
                     }
 
                 }else{
-                    if(img.height>100){
-                        height=100;
+                    if(img.height>maxWidth){
+                        height=maxWidth;
                         width=(img.width/img.height)*height;
                     }else{
                         width=img.width;
@@ -147,10 +295,43 @@
                     }
 
                 }
-                img.width=width;
-                img.height=height;
-                img.left=50;
-                img.top=50;
+                //  img.width=width;
+                //  img.height=height;
+                // img.left=50;
+                // img.top=50;
+
+                console.log(width);
+                console.log(height);
+
+                let leftP=that.width/2;
+                let topP=that.height/2;
+                
+                img.set({
+                    id: 'cat',
+                    left: leftP,
+                    top: topP,
+                    // width:width,
+                    // height:height,
+                    scaleX: width/img.width,
+                    scaleY: height/img.height,
+                    originX: 'center',
+                    originY: 'center',
+                    cornerStrokeColor: 'blue',
+                });
+
+                var oldOriginX = img.get('originX');
+                var oldOriginY = img.get('originY');
+                var center = img.getCenterPoint();
+
+                // img.set({
+                //     originX: 'center',
+                //     originY: 'center',
+                //     left: center.x,
+                //     top: center.y
+                //     });
+
+                //img.toggle('flipX');
+                   // img.toggle('flipY');
 
                 // img.on('selected', function(obj) {
                 //     console.log('selected a image');
@@ -160,8 +341,58 @@
                 img.hasControls=true;
                 img.hasBorders = true;
 
-                canvas.add(img);//把图片添加到画布上
 
+
+                img.customiseCornerIcons({
+            settings: {
+                borderColor: '#b4b4b4',
+                cornerSize: 35,
+                cornerBackgroundColor: 'red',
+                cornerShape: 'circle',
+                cornerPadding: 10,
+            },
+            tl: {
+                icon: '/static/images/dot-circle.png',
+            },
+            tr: {
+                icon: '/static/images/dot-circle.png',
+            },
+            bl: {
+                icon: '/static/images/dot-circle.png',
+            },
+            br: {
+                icon: '/static/images/dot-circle.png',
+            },
+            mb: {
+                icon: '/static/images/dot-circle.png',
+            },
+            mt: {
+                icon: '/static/images/dot-circle.png',
+            },
+            mr: {
+                icon: '/static/images/dot-circle.png',
+            },
+            // only is hasRotatingPoint is not set to false
+            mtr: {
+                icon: '/static/images/rotate-mdr.png',
+            },
+        }, function() {
+            canvas.renderAll();
+        });
+            img.setControlsVisibility({
+                    bl:true,
+                    br:true,
+                    mb:false,
+                    ml:true,
+                    mr:true,
+                    mt:false,
+                    mtr:true,
+                    tl:true,
+                    tr:true
+                });
+
+                canvas.add(img);//把图片添加到画布上
+                canvas.renderAll.bind(canvas)
 
             });
 
@@ -189,6 +420,20 @@
                 // `object` = fabric.Object instance
                 // ... do some stuff ...
                 cb(o);
+                //console.log(o);
+
+                object.setControlsVisibility({
+                    bl:true,
+                    br:true,
+                    mb:false,
+                    ml:true,
+                    mr:true,
+                    mt:false,
+                    mtr:true,
+                    tl:true,
+                    tr:true
+                });
+                
             });
         },
         clear(){
@@ -199,6 +444,9 @@
         },
         renderAll(){
             this.canvas.renderAll(this.canvas);
+        },
+        renderTop(){
+            this.canvas.renderTop();
         },
         setBackgroundColor(color){
             let canvas=this.canvas;
@@ -218,7 +466,100 @@
         },
         toSvg(){
             return this.canvas.toSVG();
+        },
+        drawControls(){
+            let canvas=document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+
+
+
+            ctx.setLineDash([]);
+            ctx.beginPath();
+            ctx.ellipse(100, 100, 50, 75, 45 * Math.PI/180, 0, 2 * Math.PI); //倾斜45°角
+            ctx.stroke();
+            ctx.setLineDash([5]);
+            ctx.moveTo(0,200);
+            ctx.lineTo(200,0);
+            ctx.stroke();
+
+            //console.log(ctx);
+
+            //document.body.appendChild(canvas)
+            
+
+            this.canvas.drawControls(ctx);
+           // this.canvas.controlsAboveOverlay=true;
+        },
+        setContronVisibility(obj){
+               obj.setControlsVisibility({
+                    bl:true,
+                    br:true,
+                    mb:false,
+                    ml:true,
+                    mr:true,
+                    mt:false,
+                    mtr:true,
+                    tl:true,
+                    tr:true
+                });
+        },
+        //设置mirror
+        toggleMirror(){
+            let img=this.canvas.getActiveObject();
+            console.log(img);
+            if(img && img.type=='image'){
+
+                img.toggle('flipX');
+                this.renderAll();
+            }
+        },
+        //设置层级
+        toNextLayer(){
+            let obj=this.canvas.getActiveObject();
+            if(!obj){
+                return;
+            }
+            obj.sendBackwards(true);
+            //this.canvas.discardActiveObject();
+            //this.canvas.discardActiveGroup();
+
+            this.renderTop();
+            //this.canvas.setActiveObject(obj);
+        },
+        toBottomLayer(){
+             let obj=this.canvas.getActiveObject();
+            if(!obj){
+                return;
+            }
+            obj.sendToBack();
+            //this.canvas.discardActiveObject();
+            //this.canvas.discardActiveGroup();
+            this.renderTop();
+            //this.canvas.setActiveObject(obj);
+        },
+        toLastLayer(){
+             let obj=this.canvas.getActiveObject();
+            if(!obj){
+                return;
+            }
+            obj.bringForward(true);
+            //this.canvas.discardActiveObject();
+            //this.canvas.discardActiveGroup();
+            this.renderTop();
+            //this.canvas.setActiveObject(obj);
+        },
+        toTopLayer(){
+             let obj=this.canvas.getActiveObject();
+            if(!obj){
+                return;
+            }
+            obj.bringToFront();
+            //this.canvas.discardActiveObject();
+            //this.canvas.discardActiveGroup();
+            this.renderTop();
+            //this.canvas.setActiveObject(obj);
         }
+
     }
   }
 </script>
