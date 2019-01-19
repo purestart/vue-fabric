@@ -1,6 +1,6 @@
 {
   "name": "vue-fabric",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "author": "purestart <522382456@qq.com>",
   "description": "fabric vue components",
   "keywords": [
@@ -28,7 +28,8 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "webpack-dev-server": ">=3.1.11"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

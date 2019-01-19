@@ -50,7 +50,7 @@ Vue.use(Fabric);
 | params              | Type             | Description                                         |
 | ----------------| ----------------| ------------------------------------------|
 | text             | String            | text content    |
-| options             | Object            | width,left,top,fill,fontSize, |
+| options             | Object            | width,left,top,fill(颜色),fontSize, |
 
 #### createRect(width,height,fillColor,left,top) 绘制矩形
 | params              | Type             | Description                                         |
@@ -61,6 +61,12 @@ Vue.use(Fabric);
 | height             | Number            | Rect height |
 | fillColor             | String            | Rect fillColor |
 
+#### freeDrawConfig(options) 开启/关闭自由绘制（画笔）
+| options              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| isDrawingMode             | Boolean            | 是否开启自由绘制 true/false    |
+| color             | String            | 绘制线颜色 |
+| drawWidth             | Number            | 绘制线宽 |
 
 #### createLine(x,y,x1,y1,fillColor,strokeColor) 绘制直线
 | params              | Type             | Description                                         |
@@ -69,7 +75,35 @@ Vue.use(Fabric);
 | fillColor             | String            | fillColor 填充颜色 |
 | strokeColor             | String            | strokeColor 绘制颜色 |
 
+#### drawDottedline(options) 绘制虚线
+| options              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| x,y,x1,y1             | Number            | line points,直线两点坐标    |
+| color             | String            | 绘制线颜色 |
+| drawWidth             | Number            | 绘制线宽 |
+| offset             | Number            | 默认6，每隔offset个像素空empty个像素 |
+| empty             | Number            | 默认3，每隔offset个像素空empty个像素 |
+
+#### drawArrowLine(options) 绘制箭头直线
+| options              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| x,y,x1,y1             | Number            | line points,直线两点坐标    |
+| color             | String            | 绘制线颜色 |
+| drawWidth             | Number            | 绘制线宽 |
+| fillColor             | Number            | 默认透明，填充颜色 |
+| theta             | Number            | 默认35，箭头角度大小 |
+| headlen             | Number            | 默认35，箭头角度大小 |
+
 #### createTriangle(options) 绘制三角形
+| options              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| x,y,x1,y1,x2,y2             | Number            | 三角形3点坐标位置    |
+| left,top             | Number            | position 位置    |
+| color             | String            | 绘制线颜色 |
+| fillColor             | String            | fillColor 填充颜色 |
+| drawWidth             | Number            | 绘制线宽 |
+
+#### createEqualTriangle(options) 绘制等边三角形
 | options              | Type             | Description                                         |
 | ----------------| ----------------| ------------------------------------------|
 | left,top             | Number            | position 位置    |
@@ -112,6 +146,8 @@ Vue.use(Fabric);
 
 #### toTopLayer() 设置当前选中画布到顶层
 
+#### discardActive() 取消选中
+
 #### getObjects() 获取当前画布上的所有元素对象
 
 #### clear() 清除当前画布上的所有元素对象
@@ -134,8 +170,44 @@ Vue.use(Fabric);
 
 #### setEditObj(obj) 设置添加对象到画布
 
+## 事件
+
+```
+ <vue-fabric ref="canvas" @selection:created="selected" :width="width" :height="height"></vue-fabric>
+```
+###鼠标事件
+| name              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| mouse:down             | event            |  mouse down   |
+| mouse:up             | event            |  mouse up   |
+| mouse:move             | event            |  mouse move   |
+| mouse:dblclick             | event            |  mouse dblclick   |
+| mouse:over             | event            |  mouse over   |
+| mouse:out             | event            |  mouse out   |
+
+###其它事件
+| name              | Type             | Description                                         |
+| ----------------| ----------------| ------------------------------------------|
+| selection:created             | event            |  选中canvas元素对象，单选和多选都会触发此事件   |
+| selection:updated             | event            |  selection updated   |
+| selection:cleared             | event            |  selection cleared   |
+| before:selection:cleared             | event            |  before selection cleared   |
+| object:added             | event            |  当有元素被添加进来时候触发   |
+| object:removed             | event            |  object removed   |
+| object:modified             | event            |  object modified   |
+| object:rotating             | event            |  object rotating   |
+| object:scaling             | event            |  object scaling   |
+| object:moving             | event            |  object moving   |
+
 ## Changelog
-### 2018.8.26
+### 2018.08.26
 > v0.1.4 * 初始化组件库
-### 2018.9.20
+### 2018.09.20
 > v0.1.8 * 新增api常用接口创建文档
+### 2019.01.19 v0.19
+-  * 新增画板事件，鼠标事件、选中事件等
+-  * 新增绘制三角形
+-  * 新增绘制虚线
+-  * 新增画笔自由绘制
+-  * 新增绘制箭头
+-  * 新增取消选中方法

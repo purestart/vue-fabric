@@ -13,7 +13,7 @@
                     <i @click="handleAdd(item.url)" class="pt-iconfont icon-plus-circle"></i>
                 </div>
             </div>
-            <vue-fabric ref="canvas" :width="width" :height="height"></vue-fabric>
+            <vue-fabric ref="canvas" :width="width" :height="height" @selection:created="selected"></vue-fabric>
             <div  class="tool-wrapper">
                 <i @click="handleDelete" class="pt-iconfont icon-delete"></i>
                 <i @click="rotate" class="pt-iconfont icon-shuaxin"></i>
@@ -69,11 +69,16 @@
         
     },
     mounted () {
-            this.$refs.canvas.createTriangle({width:40,height:40,fill:'yellow',left:80});
+            this.$refs.canvas.createTriangle({x:100,y:100,x1:150,y1:200,x2:180,y2:190,fill:'yellow',left:80});
 
             this.$refs.canvas.createImage('/static/images/sticker1.png');
             this.$refs.canvas.createImage('/static/images/sticker2.png');
             this.$refs.canvas.createImage('/static/images/sticker3.png');
+            let options={
+                x:100, y:100, x1:600, y1:600, color : "#B2B2B2", drawWidth : 2
+            }
+            this.$refs.canvas.drawDottedline(options)
+            // this.$refs.canvas.freeDrawConfig(true,"#E34F51",2)
     },
     methods:{
         handleAdd(url){
@@ -89,6 +94,9 @@
             let dataUrl=this.$refs.canvas.toDataUrl();
             //console.log(dataUrl);
             this.imgUrl=dataUrl;
+        },
+        selected(option){
+            console.log(option);
         }
     }
   }
