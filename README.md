@@ -175,8 +175,8 @@ Vue.use(Fabric);
 ```
  <vue-fabric ref="canvas" @selection:created="selected" :width="width" :height="height"></vue-fabric>
 ```
-## 事件
-###鼠标事件
+
+### 鼠标事件
 | name              | Type             | Description                                         |
 | ----------------| ----------------| ------------------------------------------|
 | mouse:down             | event            | mouse down    |
@@ -186,7 +186,7 @@ Vue.use(Fabric);
 | mouse:over             | event            | mouse over    |
 | mouse:out             | event            | mouse out    |
 
-###其它事件
+### 其它事件
 | name              | Type             | Description                                         |
 | ----------------| ----------------| ------------------------------------------|
 | selection:created             | event            | 选中canvas元素对象，单选和多选都会触发此事件   |
