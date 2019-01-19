@@ -175,6 +175,7 @@ Vue.use(Fabric);
 ```
  <vue-fabric ref="canvas" @selection:created="selected" :width="width" :height="height"></vue-fabric>
 ```
+
 ###鼠标事件
 | name              | Type             | Description                                         |
 | ----------------| ----------------| ------------------------------------------|
