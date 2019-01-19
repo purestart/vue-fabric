@@ -178,26 +178,26 @@ Vue.use(Fabric);
 ###鼠标事件
 | name              | Type             | Description                                         |
 | ----------------| ----------------| ------------------------------------------|
-| mouse:down             | event            |  mouse down   |
-| mouse:up             | event            |  mouse up   |
-| mouse:move             | event            |  mouse move   |
-| mouse:dblclick             | event            |  mouse dblclick   |
-| mouse:over             | event            |  mouse over   |
-| mouse:out             | event            |  mouse out   |
+| mouse:down             | event            | mouse down    |
+| mouse:up             | event            | mouse up    |
+| mouse:move             | event            | mouse move    |
+| mouse:dblclick             | event            | mouse dblclick    |
+| mouse:over             | event            | mouse over    |
+| mouse:out             | event            | mouse out    |
 
 ###其它事件
 | name              | Type             | Description                                         |
 | ----------------| ----------------| ------------------------------------------|
-| selection:created             | event            |  选中canvas元素对象，单选和多选都会触发此事件   |
-| selection:updated             | event            |  selection updated   |
-| selection:cleared             | event            |  selection cleared   |
-| before:selection:cleared             | event            |  before selection cleared   |
-| object:added             | event            |  当有元素被添加进来时候触发   |
-| object:removed             | event            |  object removed   |
-| object:modified             | event            |  object modified   |
-| object:rotating             | event            |  object rotating   |
-| object:scaling             | event            |  object scaling   |
-| object:moving             | event            |  object moving   |
+| selection:created             | event            | 选中canvas元素对象，单选和多选都会触发此事件   |
+| selection:updated             | event            | selection updated   |
+| selection:cleared             | event            | selection cleared   |
+| before:selection:cleared             | event            | before selection cleared   |
+| object:added             | event            | 当有元素被添加进来时候触发   |
+| object:removed             | event            | object removed   |
+| object:modified             | event            | object modified   |
+| object:rotating             | event            | object rotating   |
+| object:scaling             | event            | object scaling   |
+| object:moving             | event            | object moving   |
 
 ## Changelog
 ### 2018.08.26
