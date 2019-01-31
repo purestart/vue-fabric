@@ -51,21 +51,21 @@ Vue.use(Fabric);
 
 #### createImage(url,options) 绘制图片
 
-| params  | Type   | Description           |
-| ------- | ------ | --------------------- |
-| url     | String | image url             |
-| options | Object | width,height,left,top |
+| params  | Type   | Description                                                         |
+| ------- | ------ | ------------------------------------------------------------------- |
+| url     | String | image url                                                           |
+| options | Object | width,height,left,top,registeObjectEvent (Boolean 是否注册对象事件) |
 
 #### createTextbox(text,options) 绘制文本
 
-| params  | Type   | Description                         |
-| ------- | ------ | ----------------------------------- |
-| text    | String | text content                        |
-| options | Object | width,left,top,fill(颜色),fontSize, |
+| params  | Type   | Description                              |
+| ------- | ------ | ---------------------------------------- |
+| text    | String | text content                             |
+| options | Object | width,left,top,fillColor(颜色),fontSize, |
 
-#### createRect(width,height,fillColor,left,top) 绘制矩形
+#### createRect(options) 绘制矩形
 
-| params    | Type   | Description    |
+| options   | Type   | Description    |
 | --------- | ------ | -------------- |
 | left      | Number | left           |
 | top       | Number | top            |
@@ -81,9 +81,9 @@ Vue.use(Fabric);
 | color         | String  | 绘制线颜色                  |
 | drawWidth     | Number  | 绘制线宽                    |
 
-#### createLine(x,y,x1,y1,fillColor,strokeColor) 绘制直线
+#### createLine(options) 绘制直线
 
-| params      | Type   | Description              |
+| options     | Type   | Description              |
 | ----------- | ------ | ------------------------ |
 | x,y,x1,y1   | Number | line points,直线两点坐标 |
 | fillColor   | String | fillColor 填充颜色       |

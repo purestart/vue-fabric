@@ -168,7 +168,30 @@ export default {
     });
   },
   methods: {
-
+    registeObjectEvent (me, obj) {
+      console.log('registeObjectEvent');
+      obj.on('mousedown', function (options) {
+        me.$emit('object:mousedown', obj, options);
+      });
+      obj.on('mouseup', function (options) {
+        me.$emit('object:mouseup', obj, options);
+      });
+      obj.on('mousemove', function (options) {
+        me.$emit('object:mousemove', obj, options);
+      });
+      obj.on('mouseover', function (options) {
+        me.$emit('object:mouseover', obj, options);
+      });
+      obj.on('mouseout', function (options) {
+        me.$emit('object:mouseout', obj, options);
+      });
+      obj.on('mousedblclick', function (options) {
+        me.$emit('object:mousedblclick', obj, options);
+      });
+      obj.on('mousewheel', function (options) {
+        me.$emit('object:mousewheel', obj, options);
+      });
+    },
     drawDottedline ({ x, y, x1, y1, color = '#B2B2B2', drawWidth = 2, offset = 6, empty = 3 }) {
       let canvasObject = new fabric.Line([x, y, x1, y1], {
         strokeDashArray: [offset, empty],
@@ -264,7 +287,7 @@ export default {
       // this.canvas.sendToBack(obj);
       // this.canvas.moveTo(obj,3);
     },
-    createRect (width, height, fillColor, left = 50, top = 50) {
+    createRect ({ width, height, fillColor = 'rgba(255, 255, 255, 0)', left = 50, top = 50 }) {
       let rect = new fabric.Rect({
         left: left, // 距离画布左侧的距离，单位是像素
         top: top, // 距离画布上边的距离
@@ -275,14 +298,15 @@ export default {
       this.canvas.add(rect);
       this.canvas.renderAll();
     },
-    createCircle (options) {
+    createCircle ({ left, top, radius = 30, fillColor = 'rgba(255, 255, 255, 0)', color = '#B2B2B2', drawWidth = 2 }) {
       let defaultOption = {
-        left: 50, // 距离画布左侧的距离，单位是像素
-        top: 50, // 距离画布上边的距离
-        radius: 30 // 半径
+        left: left, // 距离画布左侧的距离，单位是像素
+        top: top, // 距离画布上边的距离
+        radius: radius, // 半径
+        fill: fillColor,
+        strokeWidth: drawWidth,
+        stroke: color
       };
-      defaultOption = Object.assign(defaultOption, options);
-
       let Circle = new fabric.Circle(defaultOption);
       this.canvas.add(Circle);
       this.canvas.renderAll();
@@ -299,13 +323,15 @@ export default {
       this.canvas.add(canvasObject);
       this.canvas.renderAll();
     },
-    createEqualTriangle (options) {
+    createEqualTriangle ({ left = 100, top = 100, width = 50, height = 80, fillColor = 'rgba(255, 255, 255, 0)', color = '#B2B2B2', drawWidth = 2 }) {
       let defaultOption = {
-        left: 50,
-        top: 50,
-        width: 50,
-        height: 80,
-        fill: 'red'
+        left: left,
+        top: top,
+        width: width,
+        height: height,
+        fill: fillColor,
+        strokeWidth: drawWidth,
+        stroke: color
       };
       defaultOption = Object.assign(defaultOption, options);
       // console.log(defaultOption);
@@ -314,7 +340,7 @@ export default {
       this.canvas.add(triangle);
       this.canvas.renderAll();
     },
-    createLine (x, y, x1, y1, fillColor, strokeColor) {
+    createLine ({ x, y, x1, y1, fillColor = 'rgba(255, 255, 255, 0)', strokeColor = '#B0B0B0' }) {
       let line = new fabric.Line([x, y, x1, y1], {
         fill: fillColor,
         stroke: strokeColor
@@ -322,51 +348,39 @@ export default {
       this.canvas.add(line);
       this.canvas.renderAll();
     },
-    createEllipse (
-      rx,
-      ry,
-      fillColor,
-      angle,
-      strokeColor,
-      strokeWidth = 3,
-      left = 50,
-      top = 50
-    ) {
+    createEllipse (options) {
+      options = Object.assign({ rx: 100, ry: 200, fillColor: 'rgba(255, 255, 255, 0)', angle: 90, strokeColor: '#B0B0B0', strokeWidth: 3, left: 50, top: 50 }, options);
       var ellipse = new fabric.Ellipse({
-        rx: rx,
-        ry: ry,
-        fill: fillColor,
-        stroke: strokeColor,
-        strokeWidth: strokeWidth,
-        angle: angle,
-        left: left,
-        top: top
+        ...options,
+        fill: options.fillColor,
+        stroke: options.strokeColor
       });
       this.canvas.add(ellipse);
       this.canvas.renderAll();
     },
-    createText (text, options) {
-      var text = new fabric.Text(text, { left: 100, top: 100 });
-      this.canvas.add(text);
+    createText (text, { left = 100, top = 100 }) {
+      var canvasObj = new fabric.Text(text, { left: left, top: top });
+      this.canvas.add(canvasObj);
       this.canvas.renderAll();
     },
-    createTextbox (text, options = { fontSize: 14, fill: '#000000' }) {
-      var text = new fabric.Textbox(text, {
-        left: options.left,
-        top: options.top,
-        width: options.width,
-        fontSize: options.fontSize,
-        fill: options.fill
+    createTextbox (text, { fontSize = 14, fillColor = '#000000', registeObjectEvent = false, width = 100, left = 100, top = 100 }) {
+      var canvasObj = new fabric.Textbox(text, {
+        left: left,
+        top: top,
+        width: width,
+        fontSize: fontSize,
+        fill: fillColor
       });
       // console.log(text);
-      this.canvas.add(text);
+      this.canvas.add(canvasObj);
+      if (registeObjectEvent) {
+        this.registeObjectEvent(this, canvasObj);
+      }
       this.canvas.renderAll();
     },
     createImage (url, options) {
       let canvas = this.canvas;
-
       let that = this;
-
       fabric.Image.fromURL(url, function (img) {
         // 添加过滤器
         // img.filters.push(new fabric.Image.filters.Grayscale());
@@ -475,6 +489,9 @@ export default {
           tr: true
         });
         canvas.add(img); // 把图片添加到画布上
+        if (options.registeObjectEvent) {
+          that.registeObjectEvent(that, img);
+        }
         canvas.renderAll.bind(canvas);
       });
     },

@@ -13,7 +13,7 @@
           <i @click="handleAdd(item.url)" class="pt-iconfont icon-plus-circle"></i>
         </div>
       </div>
-      <vue-fabric ref="canvas" :width="width" :height="height" @selection:created="selected"></vue-fabric>
+      <vue-fabric ref="canvas" :width="width" :height="height" @object:mousemove="selected"></vue-fabric>
       <div class="tool-wrapper">
         <i @click="handleDelete" class="pt-iconfont icon-delete"></i>
         <i @click="rotate" class="pt-iconfont icon-shuaxin"></i>
@@ -76,7 +76,8 @@ export default {
       x: 100, y: 100, x1: 600, y1: 600, color: '#B2B2B2', drawWidth: 2
     };
     this.$refs.canvas.drawDottedline(options);
-    // this.$refs.canvas.freeDrawConfig(true,"#E34F51",2)
+    // this.$refs.canvas.createEllipse({ rx: 200, ry: 400, left: 300 });
+    this.$refs.canvas.createTextbox('斯诺伐克两三', { top: 100, left: 300 });
   },
   methods: {
     handleAdd (url) {
@@ -93,7 +94,8 @@ export default {
       // console.log(dataUrl);
       this.imgUrl = dataUrl;
     },
-    selected (option) {
+    selected (obj, option) {
+      console.log(obj);
       console.log(option);
     }
   }
