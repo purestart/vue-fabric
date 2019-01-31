@@ -5,6 +5,7 @@
 </template>
 
 <script type='text/ecmascript-6'>
+import Utils from '../../utils';
 export default {
   name: 'VueFabric',
   props: {
@@ -23,7 +24,9 @@ export default {
       currentObj: null
     };
   },
-  created () { },
+  created () {
+
+  },
   mounted () {
     fabric.Canvas.prototype.customiseControls({
       tl: {
@@ -56,9 +59,10 @@ export default {
       //     cursor: 'pointer',
       // },
       mt: {
-        action: {
-          rotateByDegrees: 30
-        },
+        // action: {
+        //   rotateByDegrees: 30
+        // },
+        action: 'scale',
         cursor: 'pointer'
       },
       // only is hasRotatingPoint is not set to false
@@ -168,30 +172,7 @@ export default {
     });
   },
   methods: {
-    registeObjectEvent (me, obj) {
-      console.log('registeObjectEvent');
-      obj.on('mousedown', function (options) {
-        me.$emit('object:mousedown', obj, options);
-      });
-      obj.on('mouseup', function (options) {
-        me.$emit('object:mouseup', obj, options);
-      });
-      obj.on('mousemove', function (options) {
-        me.$emit('object:mousemove', obj, options);
-      });
-      obj.on('mouseover', function (options) {
-        me.$emit('object:mouseover', obj, options);
-      });
-      obj.on('mouseout', function (options) {
-        me.$emit('object:mouseout', obj, options);
-      });
-      obj.on('mousedblclick', function (options) {
-        me.$emit('object:mousedblclick', obj, options);
-      });
-      obj.on('mousewheel', function (options) {
-        me.$emit('object:mousewheel', obj, options);
-      });
-    },
+
     drawDottedline ({ x, y, x1, y1, color = '#B2B2B2', drawWidth = 2, offset = 6, empty = 3 }) {
       let canvasObject = new fabric.Line([x, y, x1, y1], {
         strokeDashArray: [offset, empty],
@@ -374,7 +355,7 @@ export default {
       // console.log(text);
       this.canvas.add(canvasObj);
       if (registeObjectEvent) {
-        this.registeObjectEvent(this, canvasObj);
+        Utils.registeObjectEvent(this, canvasObj);
       }
       this.canvas.renderAll();
     },
@@ -490,7 +471,7 @@ export default {
         });
         canvas.add(img); // 把图片添加到画布上
         if (options.registeObjectEvent) {
-          that.registeObjectEvent(that, img);
+          Utils.registeObjectEvent(that, img);
         }
         canvas.renderAll.bind(canvas);
       });
