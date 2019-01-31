@@ -250,4 +250,4 @@ Vue.use(Fabric);
 ### 2019.01.31---v0.1.10
 
 - 修改绘制图片（createImage 方法）不能定位 top 的 BUG
-- 修改镜像翻转函数 toggleMirror ，新增参数 options ,X 翻转和 Y 翻转
+- # 修改镜像翻转函数 toggleMirror ，新增参数 options ,X 翻转和 Y 翻转
