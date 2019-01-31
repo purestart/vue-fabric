@@ -137,6 +137,16 @@ Vue.use(Fabric);
 | fill     | String | fillColor 填充颜色 |
 | radius   | Number | 圆形半径           |
 
+#### createEllipse(options) 绘制椭圆
+
+| options     | Type   | Description                        |
+| ----------- | ------ | ---------------------------------- |
+| rx,ry       | Number | rx , ry 椭圆两个长轴尺寸和短轴尺寸 |
+| left,top    | Number | position 位置                      |
+| fillColor   | String | fillColor 填充颜色                 |
+| strokeColor | String | strokeColor 绘制线颜色             |
+| angle       | Number | angle 倾斜角度                     |
+
 #### setRotate(angle) 旋转选中元素
 
 | params | Type   | Description |
