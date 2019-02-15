@@ -14,8 +14,10 @@ npm install vue-fabric --save
 
 本地项目 index.html 引入
 
+```
 <script type="text/javascript" src="./static/js/fabric.min.js"></script>
 <script type="text/javascript" src="./static/js/customiseControls.min.js"></script>
+```
 
 ## Import
 

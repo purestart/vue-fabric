@@ -6,6 +6,8 @@
 
 <script type='text/ecmascript-6'>
 import Utils from '../../utils';
+const dotCircleImg = require('../../assets/dot-circle.png');
+const rotateMdrImg = require('../../assets/rotate-mdr.png');
 export default {
   name: 'VueFabric',
   props: {
@@ -31,7 +33,7 @@ export default {
     fabric.Canvas.prototype.customiseControls({
       tl: {
         action: 'scale'
-        // cursor: '/static/images/dot-circle.png',
+        // cursor: '../../assets/dot-circle.png',
       },
       tr: {
         action: 'scale'
@@ -68,7 +70,7 @@ export default {
       // only is hasRotatingPoint is not set to false
       mtr: {
         action: 'rotate'
-        // cursor: '/static/images/cow.png',
+        // cursor: '../../assets/cow.png',
       }
     });
 
@@ -83,26 +85,26 @@ export default {
           cornerBackgroundColor: '#ffffff'
         },
         tl: {
-          icon: '/static/images/dot-circle.png'
+          icon: dotCircleImg
         },
         tr: {
-          icon: '/static/images/dot-circle.png'
+          icon: dotCircleImg
         },
         bl: {
-          icon: '/static/images/dot-circle.png'
+          icon: dotCircleImg
         },
         br: {
-          icon: '/static/images/dot-circle.png'
+          icon: dotCircleImg
         },
         ml: {
-          icon: '/static/images/dot-circle.png'
+          icon: dotCircleImg
         },
         mr: {
-          icon: '/static/images/dot-circle.png'
+          icon: dotCircleImg
         },
         // only is hasRotatingPoint is not set to false
         mtr: {
-          icon: '/static/images/rotate-mdr.png'
+          icon: rotateMdrImg
         }
       },
       function () {
@@ -430,28 +432,28 @@ export default {
               cornerPadding: 10
             },
             tl: {
-              icon: '/static/images/dot-circle.png'
+              icon: dotCircleImg
             },
             tr: {
-              icon: '/static/images/dot-circle.png'
+              icon: dotCircleImg
             },
             bl: {
-              icon: '/static/images/dot-circle.png'
+              icon: dotCircleImg
             },
             br: {
-              icon: '/static/images/dot-circle.png'
+              icon: dotCircleImg
             },
             mb: {
-              icon: '/static/images/dot-circle.png'
+              icon: dotCircleImg
             },
             mt: {
-              icon: '/static/images/dot-circle.png'
+              icon: dotCircleImg
             },
             mr: {
-              icon: '/static/images/dot-circle.png'
+              icon: dotCircleImg
             },
             mtr: {
-              icon: '/static/images/rotate-mdr.png'
+              icon: rotateMdrImg
             }
           },
           function () {
@@ -470,16 +472,16 @@ export default {
           tr: true
         });
         canvas.add(img); // 把图片添加到画布上
-        if (options.registeObjectEvent) {
+        if (options && options.registeObjectEvent) {
           Utils.registeObjectEvent(that, img);
         }
         canvas.renderAll.bind(canvas);
       });
     },
-    setBackgroundImage (url) {
-      let canvas = this.canvas;
-      canvas.setBackgroundImage(url, canvas.renderAll.bind(canvas));
-    },
+    // setBackgroundImage (url) {
+    //   let canvas = this.canvas;
+    //   canvas.setBackgroundImage(url, canvas.renderAll.bind(canvas));
+    // },
     toJson () {
       let json = this.canvas.toJSON();
       return json;
