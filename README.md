@@ -1,5 +1,5 @@
 <p align="center" id="e-b">
-<img src="https://gitee.com/_pure/codes/mdir1cvkn6sab4tfl285z82/raw?blob_name=vue-fabric.png" >
+<img src="https://gitee.com/_pure/codes/dn4u2bw65zxemfklcao9i45/raw?blob_name=vue-fabric.png" >
     <p align="center">
         <a href="https://opensource.org/licenses/artistic-license-2.0.php">
             <img src="https://img.shields.io/github/license/programmeres/easy-poi.svg" >

@@ -79,9 +79,8 @@ export default {
       {
         settings: {
           borderColor: '#e4e4e4',
-          cornerSize: 25,
+          cornerSize: 20,
           cornerShape: 'circle',
-
           cornerBackgroundColor: '#ffffff'
         },
         tl: {
@@ -426,35 +425,35 @@ export default {
           {
             settings: {
               borderColor: '#b4b4b4',
-              cornerSize: 35,
-              cornerBackgroundColor: 'red',
+              cornerSize: 20,
+              cornerBackgroundColor: '#FF0000',
               cornerShape: 'circle',
-              cornerPadding: 10
-            },
-            tl: {
-              icon: dotCircleImg
-            },
-            tr: {
-              icon: dotCircleImg
-            },
-            bl: {
-              icon: dotCircleImg
-            },
-            br: {
-              icon: dotCircleImg
-            },
-            mb: {
-              icon: dotCircleImg
-            },
-            mt: {
-              icon: dotCircleImg
-            },
-            mr: {
-              icon: dotCircleImg
-            },
-            mtr: {
-              icon: rotateMdrImg
+              cornerPadding: 0
             }
+            // tl: {
+            //   icon: dotCircleImg
+            // },
+            // tr: {
+            //   icon: dotCircleImg
+            // },
+            // bl: {
+            //   icon: dotCircleImg
+            // },
+            // br: {
+            //   icon: dotCircleImg
+            // },
+            // mb: {
+            //   icon: dotCircleImg
+            // },
+            // mt: {
+            //   icon: dotCircleImg
+            // },
+            // mr: {
+            //   icon: dotCircleImg
+            // },
+            // mtr: {
+            //   icon: dotCircleImg
+            // }
           },
           function () {
             canvas.renderAll();
