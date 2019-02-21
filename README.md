@@ -193,6 +193,22 @@ Vue.use(Fabric);
 | ------- | ------ | ----------------------------------- |
 | flip    | String | 可选值 X,Y 默认值 X , 镜像翻转 X，Y |
 
+#### setCornerIcons(options) 自定义旋转操作元素图片
+
+| options               | Type   | Description                                                   |
+| --------------------- | ------ | ------------------------------------------------------------- |
+| size                  | Npmber | 图片大小 px                                                   |
+| borderColor           | String | 图片边框颜色                                                  |
+| cornerBackgroundColor | String | 设置背景颜色                                                  |
+| cornerShape           | String | 形状，默认'rect' ，可选'rect', 'circle'                       |
+| tl                    | String | top left 左上角元素图片地址（本地只能 static 下的图片）       |
+| tr                    | String | top right 右上角元素图片地址（本地只能 static 下的图片）      |
+| bl                    | String | bottom left 左下角元素图片地址（本地只能 static 下的图片）    |
+| br                    | String | bottom right 右下角元素图片地址（本地只能 static 下的图片）   |
+| ml                    | String | middle left 中间左边元素图片地址（本地只能 static 下的图片）  |
+| mr                    | String | middle right 中间右边元素图片地址（本地只能 static 下的图片） |
+| mtr                   | String | middle top 顶部元素图片地址（本地只能 static 下的图片）       |
+
 #### toNextLayer() 设置当前选中画布到下一层
 
 #### toLastLayer() 设置当前选中画布到上一层
