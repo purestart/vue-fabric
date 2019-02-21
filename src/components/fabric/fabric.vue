@@ -30,6 +30,9 @@ export default {
 
   },
   mounted () {
+    this.canvas = new fabric.Canvas('canvas', { preserveObjectStacking: true });
+    // this.createRect();
+    let canvas = this.canvas;
     fabric.Canvas.prototype.customiseControls({
       tl: {
         action: 'scale'
@@ -74,46 +77,7 @@ export default {
       }
     });
 
-    // basic settings
-    fabric.Object.prototype.customiseCornerIcons(
-      {
-        settings: {
-          borderColor: '#e4e4e4',
-          cornerSize: 20,
-          cornerShape: 'circle',
-          cornerBackgroundColor: '#ffffff'
-        },
-        tl: {
-          icon: dotCircleImg
-        },
-        tr: {
-          icon: dotCircleImg
-        },
-        bl: {
-          icon: dotCircleImg
-        },
-        br: {
-          icon: dotCircleImg
-        },
-        ml: {
-          icon: dotCircleImg
-        },
-        mr: {
-          icon: dotCircleImg
-        },
-        // only is hasRotatingPoint is not set to false
-        mtr: {
-          icon: rotateMdrImg
-        }
-      },
-      function () {
-        canvas.renderAll();
-      }
-    );
-
-    this.canvas = new fabric.Canvas('canvas', { preserveObjectStacking: true });
-    // this.createRect();
-    let canvas = this.canvas;
+    this.setCornerIcons({});
 
     // canvas.add(new fabric.Circle({ radius: 30, fill: '#f55', top: 100, left: 100 }));
     canvas.backgroundColor = '#ffffff';
@@ -173,7 +137,45 @@ export default {
     });
   },
   methods: {
-
+    setCornerIcons ({ size = 20, borderColor = '#e4e4e4', cornerBackgroundColor = '#ffffff', cornerShape = 'rect', tl = dotCircleImg, tr = dotCircleImg, bl = dotCircleImg, br = dotCircleImg, ml = dotCircleImg, mr = dotCircleImg, mtr = rotateMdrImg }) {
+      // basic settings
+      let that = this;
+      fabric.Object.prototype.customiseCornerIcons(
+        {
+          settings: {
+            borderColor: borderColor,
+            cornerSize: size,
+            cornerShape: cornerShape,  // 'rect', 'circle'
+            cornerBackgroundColor: cornerBackgroundColor
+          },
+          tl: {
+            icon: tl
+          },
+          tr: {
+            icon: tr
+          },
+          bl: {
+            icon: bl
+          },
+          br: {
+            icon: br
+          },
+          ml: {
+            icon: ml
+          },
+          mr: {
+            icon: mr
+          },
+          // only is hasRotatingPoint is not set to false
+          mtr: {
+            icon: mtr
+          }
+        },
+        function () {
+          that.canvas.renderAll();
+        }
+      );
+    },
     drawDottedline ({ x, y, x1, y1, color = '#B2B2B2', drawWidth = 2, offset = 6, empty = 3 }) {
       let canvasObject = new fabric.Line([x, y, x1, y1], {
         strokeDashArray: [offset, empty],

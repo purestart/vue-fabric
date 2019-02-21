@@ -78,6 +78,7 @@ export default {
     this.$refs.canvas.drawDottedline(options);
     // this.$refs.canvas.createEllipse({ rx: 200, ry: 400, left: 300 });
     this.$refs.canvas.createTextbox('斯诺伐克两三', { top: 100, left: 300 });
+    this.$refs.canvas.setCornerIcons({ size: 20, tl: '/static/images/cow.png' });
   },
   methods: {
     handleAdd (url) {
