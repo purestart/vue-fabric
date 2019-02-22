@@ -296,15 +296,14 @@ export default {
       this.canvas.add(Circle);
       this.canvas.renderAll();
     },
-    createTriangle ({ x, y, x1, y1, x2, y2, left = 100, top = 100, color = '#B2B2B2', drawWidth = 2, fillColor = 'rgba(255, 255, 255, 0)', id = 'triangle' }) {
-      var path = 'M ' + x + ' ' + y + ' L ' + x1 + ' ' + y1 + ' L ' + x2 + ' ' + y2 + ' z';
+    createTriangle (options) {
+      options = Object.assign({ x: 0, y: 0, x1: 0, y1: 0, x2: 0, y2: 0, left: 100, top: 100, color: '#B2B2B2', drawWidth: 2, fillColor: 'rgba(255, 255, 255, 0)', id: 'triangle' }, options);
+      var path = 'M ' + options.x + ' ' + options.y + ' L ' + options.x1 + ' ' + options.y1 + ' L ' + options.x2 + ' ' + options.y2 + ' z';
       let canvasObject = new fabric.Path(path, {
-        id: id,
-        left: left,
-        top: top,
-        stroke: color,
-        strokeWidth: drawWidth,
-        fill: fillColor
+        ...options,
+        stroke: options.color,
+        strokeWidth: options.drawWidth,
+        fill: options.fillColor
       });
       this.canvas.add(canvasObject);
       this.canvas.renderAll();
