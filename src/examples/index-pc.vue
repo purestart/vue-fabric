@@ -13,7 +13,7 @@
           <i @click="handleAdd(item.url)" class="pt-iconfont icon-plus-circle"></i>
         </div>
       </div>
-      <vue-fabric ref="canvas" :width="width" :height="height" @object:mousemove="selected"></vue-fabric>
+      <vue-fabric ref="canvas" :width="width" :height="height" @selection:created="selected" @selection:updated="selected"></vue-fabric>
       <div class="tool-wrapper">
         <i @click="handleDelete" class="pt-iconfont icon-delete"></i>
         <i @click="rotate" class="pt-iconfont icon-shuaxin"></i>
@@ -68,12 +68,12 @@ export default {
     console.log(document.body.offsetWidth);
   },
   mounted () {
-    this.$refs.canvas.createTriangle({ x: 100, y: 100, x1: 150, y1: 200, x2: 180, y2: 190, fill: 'yellow', left: 80 });
-    this.$refs.canvas.createImage('/static/images/sticker1.png', { width: 100, height: 100, left: 110, top: 110 });
+    this.$refs.canvas.createTriangle({ id: 'Triangle', x: 100, y: 100, x1: 150, y1: 200, x2: 180, y2: 190, fill: 'yellow', left: 80 });
+    this.$refs.canvas.createImage('/static/images/sticker1.png', { id: 'myImage', width: 100, height: 100, left: 110, top: 110 });
     // this.$refs.canvas.createImage('/static/images/sticker2.png');
     // this.$refs.canvas.createImage('/static/images/sticker3.png');
     let options = {
-      x: 100, y: 100, x1: 600, y1: 600, color: '#B2B2B2', drawWidth: 2
+      x: 100, y: 100, x1: 600, y1: 600, color: '#B2B2B2', drawWidth: 2, id: 'Triangle'
     };
     this.$refs.canvas.drawDottedline(options);
     // this.$refs.canvas.createEllipse({ rx: 200, ry: 400, left: 300 });

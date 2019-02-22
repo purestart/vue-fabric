@@ -176,20 +176,24 @@ export default {
         }
       );
     },
-    drawDottedline ({ x, y, x1, y1, color = '#B2B2B2', drawWidth = 2, offset = 6, empty = 3 }) {
-      let canvasObject = new fabric.Line([x, y, x1, y1], {
-        strokeDashArray: [offset, empty],
-        stroke: color,
-        strokeWidth: drawWidth
+    drawDottedline (options) {
+      options = Object.assign({ x: 0, y: 0, x1: 10, y1: 10, color: '#B2B2B2', drawWidth: 2, offset: 6, empty: 3 }, options);
+      let canvasObject = new fabric.Line([options.x, options.y, options.x1, options.y1], {
+        ...options,
+        strokeDashArray: [options.offset, options.empty],
+        stroke: options.color,
+        strokeWidth: options.drawWidth
       });
       this.canvas.add(canvasObject);
       this.canvas.renderAll();
     },
-    drawArrowLine ({ x, y, x1, y1, color = '#B2B2B2', drawWidth = 2, fillColor = 'rgba(255,255,255,0)', theta = 35, headlen = 35 }) {
-      let canvasObject = new fabric.Path(this.drawArrowBase(x, y, x1, y1, theta, headlen), {
-        stroke: color,
-        fill: fillColor,
-        strokeWidth: drawWidth
+    drawArrowLine (options) {
+      options = Object.assign({ x: 0, y: 0, x1: 0, y1: 0, color: '#B2B2B2', drawWidth: 2, fillColor: 'rgba(255,255,255,0)', theta: 35, headlen: 35 }, options);
+      let canvasObject = new fabric.Path(this.drawArrowBase(options.x, options.y, options.x1, options.y1, options.theta, options.headlen), {
+        ...options,
+        stroke: options.color,
+        fill: options.fillColor,
+        strokeWidth: options.drawWidth
       });
       this.canvas.add(canvasObject);
       this.canvas.renderAll();
@@ -271,33 +275,31 @@ export default {
       // this.canvas.sendToBack(obj);
       // this.canvas.moveTo(obj,3);
     },
-    createRect ({ width, height, fillColor = 'rgba(255, 255, 255, 0)', left = 50, top = 50 }) {
+    createRect (options) {
+      options = Object.assign({ width: 0, height: 0, fillColor: 'rgba(255, 255, 255, 0)', left: 50, top: 50 }, options);
       let rect = new fabric.Rect({
-        left: left, // 距离画布左侧的距离，单位是像素
-        top: top, // 距离画布上边的距离
-        fill: fillColor, // 填充的颜色
-        width: width, // 方形的宽度
-        height: height // 方形的高度
+        ...options,
+        fill: options.fillColor // 填充的颜色
       });
       this.canvas.add(rect);
       this.canvas.renderAll();
     },
-    createCircle ({ left, top, radius = 30, fillColor = 'rgba(255, 255, 255, 0)', color = '#B2B2B2', drawWidth = 2 }) {
+    createCircle (options) {
+      options = Object.assign({ left: 0, top: 0, radius: 30, fillColor: 'rgba(255, 255, 255, 0)', color: '#B2B2B2', drawWidth: 2 }, options);
       let defaultOption = {
-        left: left, // 距离画布左侧的距离，单位是像素
-        top: top, // 距离画布上边的距离
-        radius: radius, // 半径
-        fill: fillColor,
-        strokeWidth: drawWidth,
-        stroke: color
+        ...options,
+        fill: options.fillColor,
+        strokeWidth: options.drawWidth,
+        stroke: options.color
       };
       let Circle = new fabric.Circle(defaultOption);
       this.canvas.add(Circle);
       this.canvas.renderAll();
     },
-    createTriangle ({ x, y, x1, y1, x2, y2, left = 100, top = 100, color = '#B2B2B2', drawWidth = 2, fillColor = 'rgba(255, 255, 255, 0)' }) {
+    createTriangle ({ x, y, x1, y1, x2, y2, left = 100, top = 100, color = '#B2B2B2', drawWidth = 2, fillColor = 'rgba(255, 255, 255, 0)', id = 'triangle' }) {
       var path = 'M ' + x + ' ' + y + ' L ' + x1 + ' ' + y1 + ' L ' + x2 + ' ' + y2 + ' z';
       let canvasObject = new fabric.Path(path, {
+        id: id,
         left: left,
         top: top,
         stroke: color,
@@ -307,27 +309,25 @@ export default {
       this.canvas.add(canvasObject);
       this.canvas.renderAll();
     },
-    createEqualTriangle ({ left = 100, top = 100, width = 50, height = 80, fillColor = 'rgba(255, 255, 255, 0)', color = '#B2B2B2', drawWidth = 2 }) {
-      let defaultOption = {
-        left: left,
-        top: top,
-        width: width,
-        height: height,
-        fill: fillColor,
-        strokeWidth: drawWidth,
-        stroke: color
-      };
-      defaultOption = Object.assign(defaultOption, options);
+    createEqualTriangle (options) {
+      options = Object.assign({ left: 100, top: 100, width: 50, height: 80, fillColor: 'rgba(255, 255, 255, 0)', color: '#B2B2B2', drawWidth: 2 }, options);
       // console.log(defaultOption);
-      let triangle = new fabric.Triangle(defaultOption);
+      let triangle = new fabric.Triangle({
+        ...options,
+        fill: options.fillColor,
+        strokeWidth: options.drawWidth,
+        stroke: options.color
+      });
       this.setContronVisibility(triangle);
       this.canvas.add(triangle);
       this.canvas.renderAll();
     },
-    createLine ({ x, y, x1, y1, fillColor = 'rgba(255, 255, 255, 0)', strokeColor = '#B0B0B0' }) {
-      let line = new fabric.Line([x, y, x1, y1], {
-        fill: fillColor,
-        stroke: strokeColor
+    createLine (options) {
+      options = Object.assign({ x: 0, y: 0, x1: 10, y1: 10, fillColor: 'rgba(255, 255, 255, 0)', strokeColor: '#B0B0B0' }, options);
+      let line = new fabric.Line([options.x, options.y, options.x1, options.y1], {
+        ...options,
+        fill: options.fillColor,
+        stroke: options.strokeColor
       });
       this.canvas.add(line);
       this.canvas.renderAll();
@@ -342,22 +342,21 @@ export default {
       this.canvas.add(ellipse);
       this.canvas.renderAll();
     },
-    createText (text, { left = 100, top = 100 }) {
-      var canvasObj = new fabric.Text(text, { left: left, top: top });
+    createText (text, options) {
+      options = Object.assign({ left: 100, top: 100 }, options);
+      var canvasObj = new fabric.Text(text, { ...options });
       this.canvas.add(canvasObj);
       this.canvas.renderAll();
     },
-    createTextbox (text, { fontSize = 14, fillColor = '#000000', registeObjectEvent = false, width = 100, left = 100, top = 100 }) {
+    createTextbox (text, options) {
+      options = Object.assign({ fontSize: 14, fillColor: '#000000', registeObjectEvent: false, width: 100, left: 100, top: 100 }, options);
       var canvasObj = new fabric.Textbox(text, {
-        left: left,
-        top: top,
-        width: width,
-        fontSize: fontSize,
-        fill: fillColor
+        ...options,
+        fill: options.fillColor
       });
       // console.log(text);
       this.canvas.add(canvasObj);
-      if (registeObjectEvent) {
+      if (options.registeObjectEvent) {
         Utils.registeObjectEvent(this, canvasObj);
       }
       this.canvas.renderAll();
@@ -408,7 +407,7 @@ export default {
           topP = options.top;
         }
         img.set({
-          id: 'cat',
+          id: options.id ? options.id : 'image',
           left: leftP,
           top: topP,
           scaleX: width / img.width,
@@ -423,55 +422,56 @@ export default {
         var center = img.getCenterPoint();
         img.hasControls = true;
         img.hasBorders = true;
-        img.customiseCornerIcons(
-          {
-            settings: {
-              borderColor: '#b4b4b4',
-              cornerSize: 20,
-              cornerBackgroundColor: '#FF0000',
-              cornerShape: 'circle',
-              cornerPadding: 0
-            }
-            // tl: {
-            //   icon: dotCircleImg
-            // },
-            // tr: {
-            //   icon: dotCircleImg
-            // },
-            // bl: {
-            //   icon: dotCircleImg
-            // },
-            // br: {
-            //   icon: dotCircleImg
-            // },
-            // mb: {
-            //   icon: dotCircleImg
-            // },
-            // mt: {
-            //   icon: dotCircleImg
-            // },
-            // mr: {
-            //   icon: dotCircleImg
-            // },
-            // mtr: {
-            //   icon: dotCircleImg
-            // }
-          },
-          function () {
-            canvas.renderAll();
-          }
-        );
-        img.setControlsVisibility({
-          bl: true,
-          br: true,
-          mb: false,
-          ml: true,
-          mr: true,
-          mt: false,
-          mtr: true,
-          tl: true,
-          tr: true
-        });
+
+        // img.customiseCornerIcons(
+        //   {
+        //     settings: {
+        //       borderColor: '#b4b4b4',
+        //       cornerSize: 20,
+        //       cornerBackgroundColor: '#FF0000',
+        //       cornerShape: 'circle',
+        //       cornerPadding: 0
+        //     }
+        //     tl: {
+        //       icon: dotCircleImg
+        //     },
+        //     tr: {
+        //       icon: dotCircleImg
+        //     },
+        //     bl: {
+        //       icon: dotCircleImg
+        //     },
+        //     br: {
+        //       icon: dotCircleImg
+        //     },
+        //     mb: {
+        //       icon: dotCircleImg
+        //     },
+        //     mt: {
+        //       icon: dotCircleImg
+        //     },
+        //     mr: {
+        //       icon: dotCircleImg
+        //     },
+        //     mtr: {
+        //       icon: dotCircleImg
+        //     }
+        //   },
+        //   function () {
+        //     canvas.renderAll();
+        //   }
+        // );
+        // img.setControlsVisibility({
+        //   bl: true,
+        //   br: true,
+        //   mb: false,
+        //   ml: true,
+        //   mr: true,
+        //   mt: false,
+        //   mtr: true,
+        //   tl: true,
+        //   tr: true
+        // });
         canvas.add(img); // 把图片添加到画布上
         if (options && options.registeObjectEvent) {
           Utils.registeObjectEvent(that, img);
