@@ -71,17 +71,17 @@ Vue.use(Fabric);
 
 #### createImage(url,options) 绘制图片
 
-| params  | Type   | Description                                                         |
-| ------- | ------ | ------------------------------------------------------------------- |
-| url     | String | image url                                                           |
-| options | Object | width,height,left,top,registeObjectEvent (Boolean 是否注册对象事件) |
+| params  | Type   | Description                                                                                                              |
+| ------- | ------ | ------------------------------------------------------------------------------------------------------------------------ |
+| url     | String | image url                                                                                                                |
+| options | Object | id(唯一标识该元素，以下每个方法 options 参数都带 id),width,height,left,top,registeObjectEvent (Boolean 是否注册对象事件) |
 
 #### createTextbox(text,options) 绘制文本
 
-| params  | Type   | Description                              |
-| ------- | ------ | ---------------------------------------- |
-| text    | String | text content                             |
-| options | Object | width,left,top,fillColor(颜色),fontSize, |
+| params  | Type   | Description                                |
+| ------- | ------ | ------------------------------------------ |
+| text    | String | text content                               |
+| options | Object | width,left,top,fillColor(颜色),fontSize,id |
 
 #### createRect(options) 绘制矩形
 
@@ -92,6 +92,7 @@ Vue.use(Fabric);
 | width     | Number | Rect width     |
 | height    | Number | Rect height    |
 | fillColor | String | Rect fillColor |
+| id        | String | 唯一标识 id    |
 
 #### freeDrawConfig(options) 开启/关闭自由绘制（画笔）
 
