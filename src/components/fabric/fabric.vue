@@ -31,7 +31,6 @@ export default {
   },
   mounted () {
     this.canvas = new fabric.Canvas('canvas', { preserveObjectStacking: true });
-    // this.createRect();
     let canvas = this.canvas;
     fabric.Canvas.prototype.customiseControls({
       tl: {
@@ -76,9 +75,7 @@ export default {
         // cursor: '../../assets/cow.png',
       }
     });
-
     this.setCornerIcons({});
-
     // canvas.add(new fabric.Circle({ radius: 30, fill: '#f55', top: 100, left: 100 }));
     canvas.backgroundColor = '#ffffff';
     // canvas.renderAll();
@@ -244,20 +241,8 @@ export default {
     },
     setRotate (deg = 36) {
       let obj = this.canvas.getActiveObject();
-      // console.log(obj);
-      // let skewX=obj.skewX;
       let angle = obj.angle;
       obj.rotate(angle + deg);
-
-      // let matrix=obj.calcTransformMatrix(true);
-      // console.log(matrix);
-      // let coords= obj.getCoords();
-      // let src=obj.getSrc();
-      // let src=this.toDataUrl();
-      // obj.setSrc(src,()=>{
-      //     this.canvas.renderAll();
-      // },{});
-      // obj.skewX=skewX+36;
       this.canvas.renderAll();
     },
     discardActive () {
@@ -267,13 +252,10 @@ export default {
     },
     moveTo () {
       let obj = this.canvas.getActiveObject();
-      // console.log(obj);
       console.log(this.canvas.sendBackwards);
       this.canvas.sendBackwards(obj, true);
       this.canvas.discardActiveObject();
       this.canvas.discardActiveGroup();
-      // this.canvas.sendToBack(obj);
-      // this.canvas.moveTo(obj,3);
     },
     createRect (options) {
       options = Object.assign({ width: 0, height: 0, fillColor: 'rgba(255, 255, 255, 0)', left: 50, top: 50 }, options);
@@ -370,10 +352,8 @@ export default {
         // img.applyFilters(canvas.renderAll.bind(canvas));
         // console.log(img);
         let maxWidth = that.width / 2;
-
         let width = 0;
         let height = 0;
-
         if (img.width > img.height) {
           if (img.width > maxWidth) {
             width = maxWidth;
@@ -421,7 +401,6 @@ export default {
         var center = img.getCenterPoint();
         img.hasControls = true;
         img.hasBorders = true;
-
         // img.customiseCornerIcons(
         //   {
         //     settings: {
@@ -478,10 +457,6 @@ export default {
         canvas.renderAll.bind(canvas);
       });
     },
-    // setBackgroundImage (url) {
-    //   let canvas = this.canvas;
-    //   canvas.setBackgroundImage(url, canvas.renderAll.bind(canvas));
-    // },
     toJson () {
       let json = this.canvas.toJSON();
       return json;
@@ -504,7 +479,6 @@ export default {
         // `object` = fabric.Object instance
         // ... do some stuff ...
         cb(o);
-        // console.log(o);
         object.setControlsVisibility({
           bl: true,
           br: true,
@@ -559,7 +533,6 @@ export default {
     drawControls () {
       let canvas = document.createElement('canvas');
       var ctx = canvas.getContext('2d');
-
       ctx.setLineDash([]);
       ctx.beginPath();
       ctx.ellipse(100, 100, 50, 75, (45 * Math.PI) / 180, 0, 2 * Math.PI); // 倾斜45°角
@@ -568,8 +541,6 @@ export default {
       ctx.moveTo(0, 200);
       ctx.lineTo(200, 0);
       ctx.stroke();
-      // console.log(ctx);
-      // document.body.appendChild(canvas)
       this.canvas.drawControls(ctx);
       // this.canvas.controlsAboveOverlay=true;
     },
@@ -606,8 +577,6 @@ export default {
         return;
       }
       obj.sendBackwards(true);
-      // this.canvas.discardActiveObject();
-      // this.canvas.discardActiveGroup();
       this.renderTop();
       // this.canvas.setActiveObject(obj);
     },
@@ -617,8 +586,6 @@ export default {
         return;
       }
       obj.sendToBack();
-      // this.canvas.discardActiveObject();
-      // this.canvas.discardActiveGroup();
       this.renderTop();
       // this.canvas.setActiveObject(obj);
     },
