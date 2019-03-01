@@ -10,7 +10,7 @@
         <a href="https://app.codacy.com/project/purestart/vue-fabric/dashboard">
             <img src="https://api.codacy.com/project/badge/Grade/90ac9cd605fe47dc835f0d571973e150" >
         </a>
-         <a href="#">
+         <a href="https://gitee.com/_pure/vue-fabric#project-donate-overview">
             <img src="https://img.shields.io/badge/donate-%EF%BF%A5-orange.svg" >
         </a>
     </p>    
