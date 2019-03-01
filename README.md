@@ -20,6 +20,8 @@
 
 purestart vue-fabric.
 
+<img src="https://gitee.com/_pure/codes/dn4u2bw65zxemfklcao9i45/raw?blob_name=fabric4.gif" >
+
 ## Installation
 
 ```
