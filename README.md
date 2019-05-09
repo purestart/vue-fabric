@@ -300,3 +300,7 @@ Vue.use(Fabric);
 
 - 修改绘制图片（createImage 方法）不能定位 top 的 BUG
 - 修改镜像翻转函数 toggleMirror ，新增参数 options ,X 翻转和 Y 翻转
+
+### 2019.05.09---v0.1.20
+
+- fix webpack-dev-server 版本导致的 npm run dev fail
