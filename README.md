@@ -311,3 +311,4 @@ Vue.use(Fabric);
 ### 2019.05.09---v0.1.20
 
 - fix webpack-dev-server 版本导致的 npm run dev fail
+- 新增方法 drawByPat 根据轨迹绘制形状图形
