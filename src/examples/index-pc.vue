@@ -68,17 +68,18 @@ export default {
     console.log(document.body.offsetWidth);
   },
   mounted () {
-    this.$refs.canvas.createTriangle({ id: 'Triangle', x: 100, y: 100, x1: 150, y1: 200, x2: 180, y2: 190, fill: 'yellow', left: 80 });
+    // this.$refs.canvas.createTriangle({ id: 'Triangle', x: 100, y: 100, x1: 150, y1: 200, x2: 180, y2: 190, fill: 'yellow', left: 80 });
     this.$refs.canvas.createImage('/static/images/sticker1.png', { id: 'myImage', width: 100, height: 100, left: 110, top: 110 });
     // this.$refs.canvas.createImage('/static/images/sticker2.png');
     // this.$refs.canvas.createImage('/static/images/sticker3.png');
     let options = {
       x: 100, y: 100, x1: 600, y1: 600, color: '#B2B2B2', drawWidth: 2, id: 'Triangle'
     };
-    this.$refs.canvas.drawDottedline(options);
+    // this.$refs.canvas.drawDottedline(options);
     // this.$refs.canvas.createEllipse({ rx: 200, ry: 400, left: 300 });
-    this.$refs.canvas.createTextbox('斯诺伐克两三', { top: 100, left: 300 });
+    this.$refs.canvas.createTextbox('斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三', { top: 100, left: 300, width: 50 });
     this.$refs.canvas.setCornerIcons({ size: 20, tl: '/static/images/cow.png' });
+    this.$refs.canvas.drawByPath([[50, 50], [120, 120], [80, 160]], {});
   },
   methods: {
     handleAdd (url) {
@@ -96,8 +97,8 @@ export default {
       this.imgUrl = dataUrl;
     },
     selected (obj, option) {
-      console.log(obj);
-      console.log(option);
+      // console.log(obj);
+      // console.log(option);
     }
   }
 };

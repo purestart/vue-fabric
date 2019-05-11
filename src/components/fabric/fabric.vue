@@ -330,12 +330,13 @@ export default {
       this.canvas.renderAll();
     },
     createTextbox (text, options) {
-      options = Object.assign({ fontSize: 14, fillColor: '#000000', registeObjectEvent: false, width: 100, left: 100, top: 100 }, options);
+      options = Object.assign({ fontSize: 14, fillColor: '#000000', registeObjectEvent: false, width: 50, _fontSizeMult: 5, left: 100, top: 100 }, options);
       var canvasObj = new fabric.Textbox(text, {
         ...options,
         fill: options.fillColor
       });
-      // console.log(text);
+      let arr = canvasObj._splitTextIntoLines(text);
+      console.log(arr);
       this.canvas.add(canvasObj);
       if (options.registeObjectEvent) {
         Utils.registeObjectEvent(this, canvasObj);
@@ -604,6 +605,22 @@ export default {
       }
       obj.bringToFront();
       this.renderTop();
+    },
+    drawByPath (pathArray, options) {
+      options = Object.assign({ fillColor: 'rgba(255, 255, 255, 0)', left: 150, top: 150, strokeColor: '#B0B0B0', strokeWidth: 3 }, options);
+      let pathStr = 'M ';
+      for (let item of pathArray) {
+        pathStr = pathStr + item[0] + ' ' + item[1] + ' ';
+      }
+      pathStr = pathStr + 'z';
+      console.log(pathStr);
+      var path = new fabric.Path(pathStr);
+      path.set({
+        ...options,
+        stroke: options.strokeColor,
+        fill: options.fillColor
+      });
+      this.canvas.add(path);
     }
   }
 };

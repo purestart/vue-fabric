@@ -152,6 +152,13 @@ Vue.use(Fabric);
 | width    | Number | 三角形底边宽度     |
 | height   | Number | 三角形高           |
 
+#### drawByPath(pathArray,options) 根据轨迹绘制图形
+
+| params    | Type   | Description                                                                      |
+| --------- | ------ | -------------------------------------------------------------------------------- |
+| pathArray | Array  | 轨迹所在点数组，按顺序正时针或逆时针，如三角形 [[50, 50], [120, 120], [80, 160]] |
+| options   | Object | left,top,strokeColor,strokeWidth,fillColor                                       |
+
 #### createCircle(options) 绘制圆
 
 | options  | Type   | Description        |
