@@ -7,23 +7,23 @@
 
 <script type='text/ecmascript-6'>
   export default {
-      props:{
-        handleDelete:Function,
-        rotate:Function,
-      },
+    props: {
+      handleDelete: Function,
+      rotate: Function
+    },
     data () {
       return {
-      }
+      };
     },
     created () {
     },
     mounted () {
 
     },
-    methods:{
+    methods: {
 
     }
-  }
+  };
 </script>
 
 <style lang='scss' scoped>

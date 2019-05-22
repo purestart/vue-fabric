@@ -10,7 +10,7 @@
       <div class="list-wraper">
         <div :key="item.id" v-for="item in list" class="image-wrapper">
           <img :src="item.url" />
-          <i @click="handleAdd(item.url)" class="pt-iconfont icon-plus-circle"></i>
+          <i @click="handleAdd(item)" class="pt-iconfont icon-plus-circle"></i>
         </div>
       </div>
       <vue-fabric ref="canvas" :width="width" :height="height" @selection:created="selected" @selection:updated="selected"></vue-fabric>
@@ -82,8 +82,8 @@ export default {
     this.$refs.canvas.drawByPath([[50, 50], [120, 120], [80, 160]], {});
   },
   methods: {
-    handleAdd (url) {
-      this.$refs.canvas.createImage(url);
+    handleAdd (item) {
+      this.$refs.canvas.createImage(item.url, { id: item.id });
     },
     handleDelete () {
       this.$refs.canvas.removeCurrentObj();
