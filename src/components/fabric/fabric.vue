@@ -219,10 +219,13 @@ export default {
       path += ' L ' + arrowX + ' ' + arrowY;
       return path;
     },
-    freeDrawConfig (isDrawingMode, color = '#B2B2B2', drawWidth = 2) {
-      this.canvas.isDrawingMode = isDrawingMode;
-      this.canvas.freeDrawingBrush.color = color; // 设置自由绘颜色
-      this.canvas.freeDrawingBrush.width = drawWidth;
+    freeDrawConfig (options) {
+      options = Object.assign({color:'#b2b2b2',drawWidth:2},options);
+      
+      this.canvas.isDrawingMode = options.isDrawingMode;
+      this.canvas.freeDrawingBrush.color = options.color; // 设置自由绘颜色
+      this.canvas.freeDrawingBrush.width = options.drawWidth;
+      this.canvas.renderAll();
     },
     removeCurrentObj () {
       let obj = this.canvas.getActiveObject();
