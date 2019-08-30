@@ -1,7 +1,4 @@
+import Fabric from './fabric';
+// const App = () => import(/* webpackChunkName: "frame" */ './image-model.vue');
 
-
-import Fabric from "./fabric";
-
-export {
-  Fabric
-};
+export { Fabric };

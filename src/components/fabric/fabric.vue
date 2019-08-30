@@ -247,7 +247,7 @@ export default {
     },
     discardActive () {
       this.canvas.discardActiveObject();
-      this.canvas.discardActiveGroup();
+      // this.canvas.discardActiveGroup();
       this.canvas.renderAll();
     },
     moveTo () {
@@ -255,7 +255,7 @@ export default {
       console.log(this.canvas.sendBackwards);
       this.canvas.sendBackwards(obj, true);
       this.canvas.discardActiveObject();
-      this.canvas.discardActiveGroup();
+      // this.canvas.discardActiveGroup();
     },
     createRect (options) {
       options = Object.assign({ width: 0, height: 0, fillColor: 'rgba(255, 255, 255, 0)', left: 50, top: 50 }, options);
@@ -330,13 +330,14 @@ export default {
       this.canvas.renderAll();
     },
     createTextbox (text, options) {
-      options = Object.assign({ fontSize: 14, fillColor: '#000000', registeObjectEvent: false, width: 50, _fontSizeMult: 5, left: 100, top: 100 }, options);
+      // _fontSizeMult: 5,
+      options = Object.assign({ fontSize: 14, fillColor: '#000000', registeObjectEvent: false, width: 50, left: 100, top: 100 }, options);
       var canvasObj = new fabric.Textbox(text, {
         ...options,
         fill: options.fillColor
       });
-      let arr = canvasObj._splitTextIntoLines(text);
-      console.log(arr);
+      // let arr = canvasObj._splitTextIntoLines(text);
+      // console.log(arr);
       this.canvas.add(canvasObj);
       if (options.registeObjectEvent) {
         Utils.registeObjectEvent(this, canvasObj);
