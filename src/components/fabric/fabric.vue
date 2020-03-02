@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas id="canvas" :width="width" :height="height"></canvas>
+    <canvas :id="id" :width="width" :height="height"></canvas>
   </div>
 </template>
 
@@ -11,6 +11,10 @@ const rotateMdrImg = require('../../assets/rotate-mdr.png');
 export default {
   name: 'VueFabric',
   props: {
+    id: {
+        type: String,
+        default: 'canvas',
+    },
     width: {
       type: Number,
       required: true
@@ -221,7 +225,7 @@ export default {
     },
     freeDrawConfig (options) {
       options = Object.assign({color:'#b2b2b2',drawWidth:2},options);
-      
+
       this.canvas.isDrawingMode = options.isDrawingMode;
       this.canvas.freeDrawingBrush.color = options.color; // 设置自由绘颜色
       this.canvas.freeDrawingBrush.width = options.drawWidth;
