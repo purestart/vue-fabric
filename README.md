@@ -63,6 +63,7 @@ Vue.use(Fabric);
 
 | Name   | Type   | Default | Description   |
 | ------ | ------ | ------- | ------------- |
+| id     | String | "canvas"| id            |
 | width  | Number | 0       | canvas width  |
 | height | Number | 0       | canvas height |
 
@@ -312,3 +313,7 @@ Vue.use(Fabric);
 
 - fix webpack-dev-server 版本导致的 npm run dev fail
 - 新增方法 drawByPath 根据轨迹绘制形状图形
+
+### 2020.03.02---v0.1.21
+
+- 新增属性id 修复一个页面使用多个vue-fabric没有渲染成功的问题
