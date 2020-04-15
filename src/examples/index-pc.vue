@@ -13,7 +13,7 @@
           <i @click="handleAdd(item.url)" class="pt-iconfont icon-plus-circle"></i>
         </div>
       </div>
-      <vue-fabric ref="canvas" :width="width" :height="height" @selection:created="selected" @selection:updated="selected"></vue-fabric>
+      <vue-fabric ref="canvas" id="canvas" :width="width" :height="height" @selection:created="selected" @selection:updated="selected"></vue-fabric>
       <div class="tool-wrapper">
         <i @click="handleDelete" class="pt-iconfont icon-delete"></i>
         <i @click="rotate" class="pt-iconfont icon-shuaxin"></i>

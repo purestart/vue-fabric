@@ -13,7 +13,8 @@ export default {
   props: {
     id: {
         type: String,
-        default: 'canvas',
+        required: false,
+        default: 'fabricCanvas',
     },
     width: {
       type: Number,
@@ -34,7 +35,7 @@ export default {
 
   },
   mounted () {
-    this.canvas = new fabric.Canvas('canvas', { preserveObjectStacking: true });
+    this.canvas = new fabric.Canvas(this.id, { preserveObjectStacking: true });
     let canvas = this.canvas;
     fabric.Canvas.prototype.customiseControls({
       tl: {
@@ -394,8 +395,9 @@ export default {
         if (options && options.top) {
           topP = options.top;
         }
+        // console.log(options);
         img.set({
-          id: options.id ? options.id : 'image',
+          id: (options && options.id) ? options.id : 'image',
           left: leftP,
           top: topP,
           scaleX: width / img.width,
