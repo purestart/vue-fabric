@@ -569,17 +569,18 @@ export default {
       });
     },
     // 设置mirror
-    toggleMirror ({ flip = 'X' }) {
+    toggleMirror (options) {
+      options = options || {};
+      options = Object.assign({ flip : 'X' },options);
       let img = this.canvas.getActiveObject();
-      // console.log(img);
-      if (img && img.type == 'image') {
-        if (flip === 'X') {
+      // if (img && img.type == 'image') {
+        if (options.flip === 'X') {
           img.toggle('flipX');
         } else {
           img.toggle('flipY');
         }
         this.renderAll();
-      }
+      // }
     },
     // 设置层级
     toNextLayer () {

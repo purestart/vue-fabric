@@ -18,7 +18,7 @@
         <i @click="handleDelete" class="pt-iconfont icon-delete"></i>
         <i @click="rotate" class="pt-iconfont icon-shuaxin"></i>
         <i @click="createImg" class="pt-iconfont icon-crop"></i>
-        <i @click="discardActive" class="pt-iconfont icon-crop"></i>
+        <i @click="toggleMirror" class="pt-iconfont icon-crop"></i>
       </div>
     </div>
     <vue-image-model :close="()=>{imgUrl=''}" v-show="imgUrl.length>0" :url="imgUrl"></vue-image-model>
@@ -83,6 +83,9 @@ export default {
     this.$refs.canvas.drawByPath([[50, 50], [120, 120], [80, 160]], {});
   },
   methods: {
+    toggleMirror() {
+      this.$refs.canvas.toggleMirror({flip:"Y"});
+    },
     discardActive () {
       this.$refs.canvas.discardActive();
     },
