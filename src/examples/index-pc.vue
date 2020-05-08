@@ -83,8 +83,8 @@ export default {
     this.$refs.canvas.drawByPath([[50, 50], [120, 120], [80, 160]], {});
   },
   methods: {
-    toggleMirror() {
-      this.$refs.canvas.toggleMirror({flip:"Y"});
+    toggleMirror () {
+      this.$refs.canvas.toggleMirror({flip: 'Y'});
     },
     discardActive () {
       this.$refs.canvas.discardActive();

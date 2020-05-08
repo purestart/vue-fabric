@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 
-import {Fabric } from '@/components';
+import { Fabric } from '@/components';
 // import '../dist/hg-vcomponents.min.css';
 
 Vue.use(Fabric);

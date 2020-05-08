@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script type='text/ecmascript-6'>
+<script type="text/ecmascript-6">
 import Utils from '../../utils';
 const dotCircleImg = require('../../assets/dot-circle.png');
 const rotateMdrImg = require('../../assets/rotate-mdr.png');
@@ -12,9 +12,9 @@ export default {
   name: 'VueFabric',
   props: {
     id: {
-        type: String,
-        required: false,
-        default: 'fabricCanvas',
+      type: String,
+      required: false,
+      default: 'fabricCanvas'
     },
     width: {
       type: Number,
@@ -225,7 +225,7 @@ export default {
       return path;
     },
     freeDrawConfig (options) {
-      options = Object.assign({color:'#b2b2b2',drawWidth:2},options);
+      options = Object.assign({color: '#b2b2b2', drawWidth: 2}, options);
 
       this.canvas.isDrawingMode = options.isDrawingMode;
       this.canvas.freeDrawingBrush.color = options.color; // 设置自由绘颜色
@@ -571,15 +571,15 @@ export default {
     // 设置mirror
     toggleMirror (options) {
       options = options || {};
-      options = Object.assign({ flip : 'X' },options);
+      options = Object.assign({ flip: 'X' }, options);
       let img = this.canvas.getActiveObject();
       // if (img && img.type == 'image') {
-        if (options.flip === 'X') {
-          img.toggle('flipX');
-        } else {
-          img.toggle('flipY');
-        }
-        this.renderAll();
+      if (options.flip === 'X') {
+        img.toggle('flipX');
+      } else {
+        img.toggle('flipY');
+      }
+      this.renderAll();
       // }
     },
     // 设置层级
@@ -637,5 +637,4 @@ export default {
 };
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

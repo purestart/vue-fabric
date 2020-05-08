@@ -9,47 +9,47 @@
 
 <script type='text/ecmascript-6'>
   export default {
-    props:{
-        handleAdd:Function,
+    props: {
+      handleAdd: Function
     },
     data () {
       return {
-          list:[
-              {
-                  id:1,
-                  url:"/static/images/sticker1.png"
-              },
-              {
-                  id:2,
-                  url:"/static/images/sticker2.png"
-              },
-              {
-                  id:3,
-                  url:"/static/images/sticker3.png"
-              },
-              {
-                  id:4,
-                  url:"/static/images/sticker4.png"
-              },
-              {
-                  id:5,
-                  url:"/static/images/sticker5.png"
-              },{
-                  id:6,
-                  url:"/static/images/sticker1.png"
-              },
-          ],
-      }
+        list: [
+          {
+            id: 1,
+            url: '/static/images/sticker1.png'
+          },
+          {
+            id: 2,
+            url: '/static/images/sticker2.png'
+          },
+          {
+            id: 3,
+            url: '/static/images/sticker3.png'
+          },
+          {
+            id: 4,
+            url: '/static/images/sticker4.png'
+          },
+          {
+            id: 5,
+            url: '/static/images/sticker5.png'
+          }, {
+            id: 6,
+            url: '/static/images/sticker1.png'
+          }
+        ]
+      };
     },
     created () {
     },
     mounted () {
 
     },
-    methods:{
+    methods: {
 
     }
-  }
+  };
 </script>
 
 <style lang='scss' scoped>
@@ -65,8 +65,6 @@
 
         display: flex;
         -webkit-overflow-scrolling: touch;
-        
-
         flex-wrap:nowrap;
         border-top: 1px solid #e4e4e4;
 

@@ -8,45 +8,45 @@
 </template>
 
 <script>
-import toolbar from "./toolbar";
-import ImageList from "./image-list";
+import toolbar from './toolbar';
+import ImageList from './image-list';
 
 export default {
   name: 'el-index',
-  components:{
+  components: {
     toolbar,
     ImageList
   },
-  data(){
-    return{
-          imgUrl:"http://data618.oss-cn-qingdao.aliyuncs.com/ys/3524/img/b.jpg",
-          width:300,
-          height:500
-    }
+  data () {
+    return {
+      imgUrl: 'http://data618.oss-cn-qingdao.aliyuncs.com/ys/3524/img/b.jpg',
+      width: 300,
+      height: 500
+    };
   },
-  created(){
-    this.width=document.body.offsetWidth;
-    this.height=document.body.offsetHeight;
+  created () {
+    this.width = document.body.offsetWidth;
+    this.height = document.body.offsetHeight;
   },
-  mounted(){
-    this.$refs.canvas.createTriangle(40,40,'yellow');
+  mounted () {
+    this.$refs.canvas.createTriangle(40, 40, 'yellow');
     this.$refs.canvas.createImage('/static/images/sticker1.png');
     this.$refs.canvas.createImage('/static/images/sticker2.png');
     this.$refs.canvas.createImage('/static/images/sticker3.png');
   },
-  methods:{
-    handleDelete(){
-      console.log("handleDelete");
-      
+  methods: {
+    handleDelete () {
+      console.log('handleDelete');
+
       this.$refs.canvas.removeCurrentObj();
     },
-    handleRotate(){
-      this.$refs.canvas.setRotate(); 
+    handleRotate () {
+      this.$refs.canvas.setRotate();
      // this.$refs.canvas.moveTo();
     },
-    handleAdd(url){
+    handleAdd (url) {
       this.$refs.canvas.createImage(url);
-    },
+    }
   }
 };
 </script>
