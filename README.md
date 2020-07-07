@@ -77,7 +77,7 @@ Vue.use(Fabric);
 | params  | Type   | Description                                                                                                              |
 | ------- | ------ | ------------------------------------------------------------------------------------------------------------------------ |
 | url     | String | image url                                                                                                                |
-| options | Object | id(唯一标识该元素，以下每个方法 options 参数都带 id),width,height,left,top,registeObjectEvent (Boolean 是否注册对象事件) |
+| options | Object | id(唯一标识该元素，以下每个方法 options 参数都带 id),width,height,left,top,registeObjectEvent (Boolean 是否注册对象事件),evented 是否可被选中 |
 
 #### createTextbox(text,options) 绘制文本
 
@@ -325,3 +325,7 @@ Vue.use(Fabric);
 ### 2020.05.08---v0.1.28
 
 - 修复更新Mirror只有图片生效的问题
+
+### 2020.07.07---v0.1.29
+
+- 新增优化图片无法被选中属性设置 evented 感谢 @jessieyyy 

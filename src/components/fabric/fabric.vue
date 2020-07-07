@@ -396,7 +396,8 @@ export default {
           topP = options.top;
         }
         // console.log(options);
-        img.set({
+        let imgOptions = Object.assign(options,{
+          // ...options,
           id: (options && options.id) ? options.id : 'image',
           left: leftP,
           top: topP,
@@ -405,7 +406,10 @@ export default {
           originX: 'center',
           originY: 'center',
           cornerStrokeColor: 'blue'
-        });
+        })
+        delete imgOptions.width;
+        delete imgOptions.height;
+        img.set(imgOptions);
 
         var oldOriginX = img.get('originX');
         var oldOriginY = img.get('originY');
