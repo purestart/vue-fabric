@@ -258,6 +258,14 @@ export default {
       // this.canvas.discardActiveGroup();
       this.canvas.renderAll();
     },
+    deactivateAll (){
+      this.canvas.deactivateAll().renderAll();
+    },
+    deactivateOne (obj){
+      var activeGroup = this.canvas.getActiveGroup(); 
+      activeGroup.removeWithUpdate(obj); 
+      this.canvas.renderAll();
+    },
     moveTo () {
       let obj = this.canvas.getActiveObject();
       console.log(this.canvas.sendBackwards);

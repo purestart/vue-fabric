@@ -253,6 +253,10 @@ Vue.use(Fabric);
 
 #### setEditObj(obj) 设置添加对象到画布
 
+#### deactivateAll() 取消所有选中（框选的时候使用）
+
+#### deactivateOne(obj) 取消选中对象（框选的时候选中多个对象使用）
+
 ## 事件
 
 ```
