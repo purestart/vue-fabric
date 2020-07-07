@@ -333,3 +333,5 @@ Vue.use(Fabric);
 ### 2020.07.07---v0.1.29
 
 - 新增优化图片无法被选中属性设置 evented 感谢 @jessieyyy 
+- 新增取消所有选中方法 deactivateAll()
+- 新增取消单个选中的方法 deactivateOne(obj)
