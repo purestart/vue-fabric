@@ -402,10 +402,10 @@ export default {
         let leftP = that.width / 2;
         let topP = that.height / 2;
         if ((options && options.left) || (options && options.left == 0)) {
-          leftP = options.left;
+          leftP = options.left + width/2;
         }
         if ((options && options.top) || (options && options.top == 0)) {
-          topP = options.top;
+          topP = options.top + height/2;
         }
         // console.log(options);
         let imgOptions = Object.assign(options,{
