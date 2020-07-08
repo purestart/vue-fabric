@@ -334,3 +334,4 @@ Vue.use(Fabric);
 
 - 新增优化图片无法被选中属性设置 evented 和 selectable 感谢 @jessieyyy 
 - 新增取消单个选中的方法 deactivateOne(obj)
+- 修复image top 和 left 定位bug
