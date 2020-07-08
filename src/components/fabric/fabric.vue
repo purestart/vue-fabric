@@ -407,7 +407,7 @@ export default {
         if ((options && options.top) || (options && options.top == 0)) {
           topP = options.top;
         }
-        console.log(options);
+        // console.log(options);
         let imgOptions = Object.assign(options,{
           // ...options,
           id: (options && options.id) ? options.id : 'image',

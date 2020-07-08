@@ -70,7 +70,7 @@ export default {
   },
   mounted () {
     // this.$refs.canvas.createTriangle({ id: 'Triangle', x: 100, y: 100, x1: 150, y1: 200, x2: 180, y2: 190, fill: 'yellow', left: 80 });
-    this.$refs.canvas.createImage('/static/images/sticker1.png', { id: 'myImage', width: 100, height: 100, left: 510, top: 610 ,evented:false, selectable: false});
+    this.$refs.canvas.createImage('/static/images/sticker1.png', { id: 'myImage', width: 100, height: 100, left: 510, top: 0 ,evented:false, selectable: false});
     // this.$refs.canvas.createImage('/static/images/sticker2.png');
     // this.$refs.canvas.createImage('/static/images/sticker3.png');
     let options = {
