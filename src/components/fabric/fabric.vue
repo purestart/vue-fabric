@@ -401,13 +401,13 @@ export default {
         }
         let leftP = that.width / 2;
         let topP = that.height / 2;
-        if (options && options.left) {
+        if ((options && options.left) || (options && options.left == 0)) {
           leftP = options.left;
         }
-        if (options && options.top) {
+        if ((options && options.top) || (options && options.top == 0)) {
           topP = options.top;
         }
-        // console.log(options);
+        console.log(options);
         let imgOptions = Object.assign(options,{
           // ...options,
           id: (options && options.id) ? options.id : 'image',
@@ -421,6 +421,7 @@ export default {
         })
         delete imgOptions.width;
         delete imgOptions.height;
+        console.log("imgOptions", imgOptions);
         img.set(imgOptions);
 
         var oldOriginX = img.get('originX');
