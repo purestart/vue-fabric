@@ -259,11 +259,15 @@ export default {
       this.canvas.renderAll();
     },
     deactivateAll (){
-      this.canvas.deactivateAll().renderAll();
+      // this.canvas.deactivateAll().renderAll();
     },
     deactivateOne (obj){
       var activeGroup = this.canvas.getActiveGroup(); 
       activeGroup.removeWithUpdate(obj); 
+      this.canvas.renderAll();
+    },
+    setselections(flag){
+      this.canvas.selections = flag;
       this.canvas.renderAll();
     },
     moveTo () {

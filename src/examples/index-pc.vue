@@ -70,7 +70,7 @@ export default {
   },
   mounted () {
     // this.$refs.canvas.createTriangle({ id: 'Triangle', x: 100, y: 100, x1: 150, y1: 200, x2: 180, y2: 190, fill: 'yellow', left: 80 });
-    this.$refs.canvas.createImage('/static/images/sticker1.png', { id: 'myImage', width: 100, height: 100, left: 110, top: 110 ,evented:false});
+    this.$refs.canvas.createImage('/static/images/sticker1.png', { id: 'myImage', width: 100, height: 100, left: 110, top: 110 ,evented:false, selectable: false});
     // this.$refs.canvas.createImage('/static/images/sticker2.png');
     // this.$refs.canvas.createImage('/static/images/sticker3.png');
     let options = {
@@ -81,6 +81,7 @@ export default {
     this.$refs.canvas.createTextbox('斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三', { top: 100, left: 300, width: 50 });
     this.$refs.canvas.setCornerIcons({ size: 20, tl: '/static/images/cow.png' });
     this.$refs.canvas.drawByPath([[50, 50], [120, 120], [80, 160]], {});
+    this.$refs.canvas.setselections(false);
   },
   methods: {
     toggleMirror () {
