@@ -232,6 +232,13 @@ export default {
       this.canvas.freeDrawingBrush.width = options.drawWidth;
       this.canvas.renderAll();
     },
+    eraseDrawConfig(options){
+      options = Object.assign({color: 'white', drawWidth: 2}, options);
+
+      this.canvas.freeDrawingBrush.color = options.color; // 设置自由绘颜色
+      this.canvas.freeDrawingBrush.width = options.drawWidth;
+      this.canvas.renderAll();
+    },
     removeCurrentObj () {
       let obj = this.canvas.getActiveObject();
       // console.log(obj);
@@ -262,8 +269,8 @@ export default {
       // this.canvas.deactivateAll().renderAll();
     },
     deactivateOne (obj){
-      var activeGroup = this.canvas.getActiveGroup(); 
-      activeGroup.removeWithUpdate(obj); 
+      var activeGroup = this.canvas.getActiveGroup();
+      activeGroup.removeWithUpdate(obj);
       this.canvas.renderAll();
     },
     setselections(flag){
@@ -349,8 +356,15 @@ export default {
       this.canvas.add(canvasObj);
       this.canvas.renderAll();
     },
+    createItext (text, options){
+      options = Object.assign({ left: 0, top: 0 , fill:'#000'}, options);
+      let IText = new fabric.IText(text,options);
+      this.canvas.add(IText);
+      this.canvas.renderAll();
+    },
     createTextbox (text, options) {
       // _fontSizeMult: 5,
+      options.fillColor = options.fillColor?options.fillColor:options.fill;
       options = Object.assign({ fontSize: 14, fillColor: '#000000', registeObjectEvent: false, width: 50, left: 100, top: 100 }, options);
       var canvasObj = new fabric.Textbox(text, {
         ...options,

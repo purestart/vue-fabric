@@ -77,14 +77,21 @@ Vue.use(Fabric);
 | params  | Type   | Description                                                                                                              |
 | ------- | ------ | ------------------------------------------------------------------------------------------------------------------------ |
 | url     | String | image url                                                                                                                |
-| options | Object | id(唯一标识该元素，以下每个方法 options 参数都带 id),width,height,left,top,registeObjectEvent (Boolean 是否注册对象事件),evented 是否可被点击选中,selectable 是否禁止被选中 |
+| options | Object | id(唯一标识该元素，以下每个方法 options 参数都带 id),width,height,left,top,registeObjectEvent (Boolean 是否注册对象事件),evented 是否可被点击选中,selectable 是否禁止被选中...其它属性 |
 
 #### createTextbox(text,options) 绘制文本
 
 | params  | Type   | Description                                |
 | ------- | ------ | ------------------------------------------ |
 | text    | String | text content                               |
-| options | Object | width,left,top,fillColor(颜色),fontSize,id |
+| options | Object | width,left,top,fill(颜色),fontSize,id,fontFamily,strokeWidth,stroke,textAlign,textBackgroundColor,lineHeight,fontWeight,...其它属性|
+
+#### createItext(text,options) 绘制可编辑文本(可换行显示文本)
+
+| params  | Type   | Description                                |
+| ------- | ------ | ------------------------------------------ |
+| text    | String | text content                               |
+| options | Object | width,left,top,fill(颜色),fontSize,id,editable(是否可编辑),fontFamily,fontSize,strokeWidth,stroke,textAlign,textBackgroundColor,lineHeight,fontWeight,...其它属性|
 
 #### createRect(options) 绘制矩形
 
@@ -96,6 +103,7 @@ Vue.use(Fabric);
 | height    | Number | Rect height    |
 | fillColor | String | Rect fillColor |
 | id        | String | 唯一标识 id    |
+| 其它属性兼容 | all | 兼容原生其它属性    |
 
 #### freeDrawConfig(options) 开启/关闭自由绘制（画笔）
 
@@ -105,6 +113,13 @@ Vue.use(Fabric);
 | color         | String  | 绘制线颜色                  |
 | drawWidth     | Number  | 绘制线宽                    |
 
+#### eraseDrawConfig(options) 开启自由绘制橡皮擦(只对当前绘制画布有效)
+
+| options       | Type    | Description                 |
+| ------------- | ------- | --------------------------- |
+| color         | String  | 选填,擦除颜色默认白色        |
+| drawWidth     | Number  | 橡皮擦线宽                   |
+
 #### createLine(options) 绘制直线
 
 | options     | Type   | Description              |
@@ -112,6 +127,7 @@ Vue.use(Fabric);
 | x,y,x1,y1   | Number | line points,直线两点坐标 |
 | fillColor   | String | fillColor 填充颜色       |
 | strokeColor | String | strokeColor 绘制颜色     |
+| 其它属性兼容 | all | 兼容原生其它属性    |
 
 #### drawDottedline(options) 绘制虚线
 
@@ -122,6 +138,7 @@ Vue.use(Fabric);
 | drawWidth | Number | 绘制线宽                                  |
 | offset    | Number | 默认 6，每隔 offset 个像素空 empty 个像素 |
 | empty     | Number | 默认 3，每隔 offset 个像素空 empty 个像素 |
+| 其它属性兼容 | all | 兼容原生其它属性    |
 
 #### drawArrowLine(options) 绘制箭头直线
 
@@ -133,6 +150,7 @@ Vue.use(Fabric);
 | fillColor | Number | 默认透明，填充颜色       |
 | theta     | Number | 默认 35，箭头角度大小    |
 | headlen   | Number | 默认 35，箭头角度大小    |
+| 其它属性兼容 | all | 兼容原生其它属性    |
 
 #### createTriangle(options) 绘制三角形
 
@@ -143,6 +161,7 @@ Vue.use(Fabric);
 | color           | String | 绘制线颜色          |
 | fillColor       | String | fillColor 填充颜色  |
 | drawWidth       | Number | 绘制线宽            |
+| 其它属性兼容 | all | 兼容原生其它属性    |
 
 #### createEqualTriangle(options) 绘制等边三角形
 
@@ -152,13 +171,14 @@ Vue.use(Fabric);
 | fill     | String | fillColor 填充颜色 |
 | width    | Number | 三角形底边宽度     |
 | height   | Number | 三角形高           |
+| 其它属性兼容 | all | 兼容原生其它属性    |
 
 #### drawByPath(pathArray,options) 根据轨迹绘制图形
 
 | params    | Type   | Description                                                                      |
 | --------- | ------ | -------------------------------------------------------------------------------- |
 | pathArray | Array  | 轨迹所在点数组，按顺序正时针或逆时针，如三角形 [[50, 50], [120, 120], [80, 160]] |
-| options   | Object | left,top,strokeColor,strokeWidth,fillColor                                       |
+| options   | Object | left,top,strokeColor,strokeWidth,fillColor,...其它属性                                      |
 
 #### createCircle(options) 绘制圆
 
@@ -167,6 +187,7 @@ Vue.use(Fabric);
 | left,top | Number | position 位置      |
 | fill     | String | fillColor 填充颜色 |
 | radius   | Number | 圆形半径           |
+| 其它属性兼容 | all | 兼容原生其它属性    |
 
 #### createEllipse(options) 绘制椭圆
 
@@ -177,6 +198,7 @@ Vue.use(Fabric);
 | fillColor   | String | fillColor 填充颜色                 |
 | strokeColor | String | strokeColor 绘制线颜色             |
 | angle       | Number | angle 倾斜角度                     |
+| 其它属性兼容 | all | 兼容原生其它属性    |
 
 #### setRotate(angle) 旋转选中元素
 
@@ -204,7 +226,7 @@ Vue.use(Fabric);
 | ------- | ------ | ----------------------------------- |
 | flip    | String | 可选值 X,Y 默认值 X , 镜像翻转 X，Y |
 
-#### setCornerIcons(options) 自定义旋转操作元素图片
+#### setCornerIcons(options) 自定义操作元素图片
 
 | options               | Type   | Description                                                   |
 | --------------------- | ------ | ------------------------------------------------------------- |
@@ -252,8 +274,6 @@ Vue.use(Fabric);
 #### getEditObj() 返回当前选中对象，并不在画布上显示，用于编辑当前元素
 
 #### setEditObj(obj) 设置添加对象到画布
-
-#### deactivateAll() 取消所有选中（框选的时候使用）
 
 #### deactivateOne(obj) 取消选中对象（框选的时候选中多个对象使用）
 

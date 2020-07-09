@@ -17,8 +17,8 @@
       <div class="tool-wrapper">
         <i @click="handleDelete" class="pt-iconfont icon-delete"></i>
         <i @click="rotate" class="pt-iconfont icon-shuaxin"></i>
-        <i @click="createImg" class="pt-iconfont icon-crop"></i>
-        <i @click="toggleMirror" class="pt-iconfont icon-crop"></i>
+        <i @click="changeDrawMore" class="pt-iconfont icon-crop"></i>
+        <i @click="setErase" class="pt-iconfont icon-crop"></i>
       </div>
     </div>
     <vue-image-model :close="()=>{imgUrl=''}" v-show="imgUrl.length>0" :url="imgUrl"></vue-image-model>
@@ -60,7 +60,8 @@ export default {
           id: 5,
           url: '/static/images/sticker5.png'
         }
-      ]
+      ],
+      isDrawingMode: true
     };
   },
   created () {
@@ -70,20 +71,29 @@ export default {
   },
   mounted () {
     // this.$refs.canvas.createTriangle({ id: 'Triangle', x: 100, y: 100, x1: 150, y1: 200, x2: 180, y2: 190, fill: 'yellow', left: 80 });
-    this.$refs.canvas.createImage('/static/images/sticker1.png', { id: 'myImage', width: 100, height: 100, left: 10, top: 10 ,evented:false, selectable: false});
-    // this.$refs.canvas.createImage('/static/images/sticker2.png');
-    // this.$refs.canvas.createImage('/static/images/sticker3.png');
-    let options = {
-      x: 100, y: 100, x1: 600, y1: 600, color: '#B2B2B2', drawWidth: 2, id: 'Triangle'
-    };
-    // this.$refs.canvas.drawDottedline(options);
-    // this.$refs.canvas.createEllipse({ rx: 200, ry: 400, left: 300 });
-    this.$refs.canvas.createTextbox('斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三', { top: 100, left: 300, width: 50 });
-    this.$refs.canvas.setCornerIcons({ size: 20, tl: '/static/images/cow.png' });
-    this.$refs.canvas.drawByPath([[50, 50], [120, 120], [80, 160]], {});
-    this.$refs.canvas.setselections(false);
+//     this.$refs.canvas.createImage('/static/images/sticker1.png', { id: 'myImage', width: 100, height: 100, left: 10, top: 10 ,evented:false, selectable: false});
+//     // this.$refs.canvas.createImage('/static/images/sticker2.png');
+//     // this.$refs.canvas.createImage('/static/images/sticker3.png');
+//     let options = {
+//       x: 100, y: 100, x1: 600, y1: 600, color: '#B2B2B2', drawWidth: 2, id: 'Triangle'
+//     };
+//     // this.$refs.canvas.drawDottedline(options);
+//     // this.$refs.canvas.createEllipse({ rx: 200, ry: 400, left: 300 });
+//     this.$refs.canvas.createItext(`斯诺伐克两三斯诺伐克两三斯诺伐克两三斯诺伐
+// 克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三`, { top: 100, left: 300, width: 50 ,editable:false});
+//     this.$refs.canvas.setCornerIcons({ size: 20, tl: '/static/images/cow.png' });
+//     this.$refs.canvas.drawByPath([[50, 50], [120, 120], [80, 160]], {});
+    this.$refs.canvas.freeDrawConfig({isDrawingMode:this.isDrawingMode});
+    
   },
   methods: {
+    changeDrawMore() {
+      this.isDrawingMode = !this.isDrawingMode;
+      this.$refs.canvas.freeDrawConfig({isDrawingMode:this.isDrawingMode});
+    },
+    setErase(){
+      this.$refs.canvas.eraseDrawConfig({drawWidth:20});
+    },
     toggleMirror () {
       this.$refs.canvas.toggleMirror({flip: 'Y'});
     },
