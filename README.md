@@ -79,6 +79,13 @@ Vue.use(Fabric);
 | url     | String | image url                                                                                                                |
 | options | Object | id(唯一标识该元素，以下每个方法 options 参数都带 id),width,height,left,top,registeObjectEvent (Boolean 是否注册对象事件),evented 是否可被点击选中,selectable 是否禁止被选中...其它属性 |
 
+#### createImageByImg(img,options) 绘制图片 
+
+| params  | Type   | Description                                                                                                              |
+| ------- | ------ | ------------------------------------------------------------------------------------------------------------------------ |
+| img     | Image对象 | new Image对象                                                                                                                |
+| options | Object | id(唯一标识该元素，以下每个方法 options 参数都带 id),width,height,left,top,registeObjectEvent (Boolean 是否注册对象事件),evented 是否可被点击选中,selectable 是否禁止被选中...其它属性 |
+
 #### createTextbox(text,options) 绘制文本
 
 | params  | Type   | Description                                |

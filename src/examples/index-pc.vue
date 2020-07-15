@@ -18,7 +18,7 @@
         <i @click="handleDelete" class="pt-iconfont icon-delete"></i>
         <i @click="rotate" class="pt-iconfont icon-shuaxin"></i>
         <i @click="changeDrawMore" class="pt-iconfont icon-crop"></i>
-        <i @click="setErase" class="pt-iconfont icon-crop"></i>
+        <i @click="createImg" class="pt-iconfont icon-crop"></i>
       </div>
     </div>
     <vue-image-model :close="()=>{imgUrl=''}" v-show="imgUrl.length>0" :url="imgUrl"></vue-image-model>
@@ -83,7 +83,17 @@ export default {
 // 克两三斯诺伐克两三斯诺伐克两三斯诺伐克两三`, { top: 100, left: 300, width: 50 ,editable:false});
 //     this.$refs.canvas.setCornerIcons({ size: 20, tl: '/static/images/cow.png' });
 //     this.$refs.canvas.drawByPath([[50, 50], [120, 120], [80, 160]], {});
-    this.$refs.canvas.freeDrawConfig({isDrawingMode:this.isDrawingMode});
+
+    var img = new Image();
+    img.setAttribute('crossOrigin', 'anonymous');
+    let that = this;
+    img.onload = function () {
+          that.$refs.canvas.createImageByImg(img, { id: 'myImage', width: 100, height: 100, left: 10, top: 10 ,evented:false, selectable: false, crossOrigin:"anonymous"});
+    }
+    img.src = '/static/images/sticker1.png';
+
+    // this.$refs.canvas.createImageByImg('http://cdn2.jianshu.io/assets/web/logo-58fd04f6f0de908401aa561cda6a0688.png', { id: 'myImage', width: 100, height: 100, left: 10, top: 10 ,evented:false, selectable: false, crossOrigin:"anonymous"});
+    // this.$refs.canvas.freeDrawConfig({isDrawingMode:this.isDrawingMode});
     
   },
   methods: {

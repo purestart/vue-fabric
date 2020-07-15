@@ -378,6 +378,70 @@ export default {
       }
       this.canvas.renderAll();
     },
+    createImageByImg (img, options) {
+        let canvas = this.canvas;
+        let that = this;
+        let maxWidth = that.width / 2;
+        let width = 0;
+        let height = 0;
+        if (img.width > img.height) {
+          if (img.width > maxWidth) {
+            width = maxWidth;
+            height = (img.height / img.width) * width;
+          } else {
+            width = img.width;
+            height = img.height;
+          }
+        } else {
+          if (img.height > maxWidth) {
+            height = maxWidth;
+            width = (img.width / img.height) * height;
+          } else {
+            width = img.width;
+            height = img.height;
+          }
+        }
+        if (options && options.width) {
+          width = options.width;
+        }
+        if (options && options.height) {
+          height = options.height;
+        }
+        let leftP = that.width / 2;
+        let topP = that.height / 2;
+        if ((options && options.left) || (options && options.left == 0)) {
+          leftP = options.left + width/2;
+        }
+        if ((options && options.top) || (options && options.top == 0)) {
+          topP = options.top + height/2;
+        }
+        // console.log(options);
+        let imgOptions = Object.assign(options,{
+          // ...options,
+          id: (options && options.id) ? options.id : 'image',
+          left: leftP,
+          top: topP,
+          scaleX: width / img.width,
+          scaleY: height / img.height,
+          originX: 'center',
+          originY: 'center',
+          cornerStrokeColor: 'blue'
+        })
+        delete imgOptions.width;
+        delete imgOptions.height;
+        // img.set(imgOptions);
+
+        var canvasImage=new fabric.Image(img,imgOptions)
+
+        canvasImage.hasControls = true;
+        canvasImage.hasBorders = true;
+
+        canvas.add(canvasImage); // 把图片添加到画布上
+        if (options && options.registeObjectEvent) {
+          Utils.registeObjectEvent(that, canvasImage);
+        }
+        canvas.renderAll.bind(canvas);
+    },
     createImage (url, options) {
       let canvas = this.canvas;
       let that = this;
@@ -387,6 +451,7 @@ export default {
         // 应用过滤器并重新渲染画布执行
         // img.applyFilters(canvas.renderAll.bind(canvas));
         // console.log(img);
+
         let maxWidth = that.width / 2;
         let width = 0;
         let height = 0;
