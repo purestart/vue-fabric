@@ -273,7 +273,7 @@ export default {
       activeGroup.removeWithUpdate(obj);
       this.canvas.renderAll();
     },
-    setselection(flag){
+    setSelection(flag){
       this.canvas.selection = flag;
       this.canvas.renderAll();
     },
