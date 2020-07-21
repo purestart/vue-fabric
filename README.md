@@ -213,6 +213,12 @@ Vue.use(Fabric);
 | ------ | ------ | ----------- |
 | angle  | Number | 旋转角度    |
 
+#### setselection(flag) 设置画布是否可以款选
+
+| params | Type   | Description |
+| ------ | ------ | ----------- |
+| flag  | Boolean | 画布是否可以款选    |
+
 #### setBackgroundImage(url) 设置画布背景图片
 
 | params | Type   | Description  |
@@ -362,3 +368,8 @@ Vue.use(Fabric);
 - 新增优化图片无法被选中属性设置 evented 和 selectable 感谢 @jessieyyy 
 - 新增取消单个选中的方法 deactivateOne(obj)
 - 修复image top 和 left 定位bug
+
+### 2020.07.21---v0.1.37
+
+- 新增createImageByImg(img, options)方法 其中参数img是Image对象
+- 新增setselection(flag) 设置画布是否可以款选

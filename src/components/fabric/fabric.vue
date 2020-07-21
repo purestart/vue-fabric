@@ -273,8 +273,8 @@ export default {
       activeGroup.removeWithUpdate(obj);
       this.canvas.renderAll();
     },
-    setselections(flag){
-      this.canvas.selections = flag;
+    setselection(flag){
+      this.canvas.selection = flag;
       this.canvas.renderAll();
     },
     moveTo () {
@@ -379,6 +379,7 @@ export default {
       this.canvas.renderAll();
     },
     createImageByImg (img, options) {
+        options = options || {}
         let canvas = this.canvas;
         let that = this;
         let maxWidth = that.width / 2;
@@ -443,6 +444,7 @@ export default {
         canvas.renderAll.bind(canvas);
     },
     createImage (url, options) {
+      options = options || {}
       let canvas = this.canvas;
       let that = this;
       fabric.Image.fromURL(url, function (img) {
