@@ -213,11 +213,11 @@ Vue.use(Fabric);
 | ------ | ------ | ----------- |
 | angle  | Number | 旋转角度    |
 
-#### setSelection(flag) 设置画布是否可以款选
+#### setSelection(flag) 设置画布是否可以框选
 
 | params | Type   | Description |
 | ------ | ------ | ----------- |
-| flag  | Boolean | 画布是否可以款选    |
+| flag  | Boolean | 画布是否可以框选    |
 
 #### setBackgroundImage(url) 设置画布背景图片
 
@@ -372,4 +372,4 @@ Vue.use(Fabric);
 ### 2020.07.21---v0.1.37
 
 - 新增createImageByImg(img, options)方法 其中参数img是Image对象
-- 新增setSelection(flag) 设置画布是否可以款选
+- 新增setSelection(flag) 设置画布是否可以框选
