@@ -88,7 +88,7 @@ export default {
     img.setAttribute('crossOrigin', 'anonymous');
     let that = this;
     img.onload = function () {
-          that.$refs.canvas.createImageByImg(img, { id: 'myImage', width: 100, height: 100, left: 10, top: 10 ,evented:false, selectable: false, crossOrigin:"anonymous"});
+          that.$refs.canvas.createImageByImg(img, { id: 'myImage', left: 10, top: 10 ,evented:false, selectable: false, crossOrigin:"anonymous"});
     }
     img.src = '/static/images/sticker1.png';
     this.$refs.canvas.setSelection(false)

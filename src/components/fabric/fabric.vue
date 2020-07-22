@@ -382,26 +382,28 @@ export default {
         options = options || {}
         let canvas = this.canvas;
         let that = this;
-        let maxWidth = that.width / 2;
+        // let maxWidth = that.width;
         let width = 0;
         let height = 0;
-        if (img.width > img.height) {
-          if (img.width > maxWidth) {
-            width = maxWidth;
-            height = (img.height / img.width) * width;
-          } else {
-            width = img.width;
-            height = img.height;
-          }
-        } else {
-          if (img.height > maxWidth) {
-            height = maxWidth;
-            width = (img.width / img.height) * height;
-          } else {
-            width = img.width;
-            height = img.height;
-          }
-        }
+        width = img.width;
+        height = img.height;
+        // if (img.width > img.height) {
+        //   if (img.width > maxWidth) {
+        //     width = maxWidth;
+        //     height = (img.height / img.width) * width;
+        //   } else {
+        //     width = img.width;
+        //     height = img.height;
+        //   }
+        // } else {
+        //   if (img.height > maxWidth) {
+        //     height = maxWidth;
+        //     width = (img.width / img.height) * height;
+        //   } else {
+        //     width = img.width;
+        //     height = img.height;
+        //   }
+        // }
         if (options && options.width) {
           width = options.width;
         }
@@ -416,9 +418,7 @@ export default {
         if ((options && options.top) || (options && options.top == 0)) {
           topP = options.top + height/2;
         }
-        // console.log(options);
         let imgOptions = Object.assign(options,{
-          // ...options,
           id: (options && options.id) ? options.id : 'image',
           left: leftP,
           top: topP,
@@ -430,8 +430,6 @@ export default {
         })
         delete imgOptions.width;
         delete imgOptions.height;
-        // img.set(imgOptions);
-
         var canvasImage=new fabric.Image(img,imgOptions)
 
         canvasImage.hasControls = true;
@@ -453,27 +451,28 @@ export default {
         // 应用过滤器并重新渲染画布执行
         // img.applyFilters(canvas.renderAll.bind(canvas));
         // console.log(img);
-
         let maxWidth = that.width / 2;
         let width = 0;
         let height = 0;
-        if (img.width > img.height) {
-          if (img.width > maxWidth) {
-            width = maxWidth;
-            height = (img.height / img.width) * width;
-          } else {
-            width = img.width;
-            height = img.height;
-          }
-        } else {
-          if (img.height > maxWidth) {
-            height = maxWidth;
-            width = (img.width / img.height) * height;
-          } else {
-            width = img.width;
-            height = img.height;
-          }
-        }
+        width = img.width;
+        height = img.height;
+        // if (img.width > img.height) {
+        //   if (img.width > maxWidth) {
+        //     width = maxWidth;
+        //     height = (img.height / img.width) * width;
+        //   } else {
+        //     width = img.width;
+        //     height = img.height;
+        //   }
+        // } else {
+        //   if (img.height > maxWidth) {
+        //     height = maxWidth;
+        //     width = (img.width / img.height) * height;
+        //   } else {
+        //     width = img.width;
+        //     height = img.height;
+        //   }
+        // }
         if (options && options.width) {
           width = options.width;
         }
