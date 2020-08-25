@@ -616,23 +616,41 @@ export default {
       let canvas = this.canvas;
       this.canvas.setBackgroundColor(color, canvas.renderAll.bind(canvas));
     },
-    setBackgroundImage (
-      imgUrl,
-      opacity = 1,
-      angle = 0,
-      left = 0,
-      top = 0,
-      crossOrigin = null
-    ) {
+    setBackgroundImage (options) {
       let canvas = this.canvas;
-      canvas.setBackgroundImage(imgUrl, canvas.renderAll.bind(canvas), {
-        opacity: opacity,
-        angle: angle,
-        left: left,
-        top: top,
+      let opt = {
+        opacity: 1,
+        left: 0,
+        top: 0,
+        angle: 0,
+        crossOrigin: null,
         originX: 'left',
         originY: 'top',
-        crossOrigin: crossOrigin
+        scaleX: 1,
+        scaleY: 1
+      };
+      // console.log(options);
+      if(Object.prototype.toString.call(options) == "[object String]"){
+        console.log("字符串兼容");
+        opt.imgUrl = options;
+      }else{
+        opt = Object.assign(opt, options)
+      }
+
+      // canvas.setBackgroundImage(opt.imgUrl, canvas.renderAll.bind(canvas), {
+      //   opacity: opt.opacity,
+      //   angle: opt.angle,
+      //   left: opt.left,
+      //   top: opt.top,
+      //   originX: 'left',
+      //   originY: 'top',
+      //   crossOrigin: opt.crossOrigin,
+      //   ...opt
+      // });
+
+      fabric.Image.fromURL(opt.imgUrl, function(img) {
+        img.set({width: opt.width?opt.width:canvas.width , height: opt.height?opt.height:canvas.height, originX: 'left', originY: 'top',scaleX: opt.scaleX, scaleY: opt.scaleY,});
+        canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {...opt});
       });
     },
     toSvg () {

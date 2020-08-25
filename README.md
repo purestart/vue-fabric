@@ -219,11 +219,18 @@ Vue.use(Fabric);
 | ------ | ------ | ----------- |
 | flag  | Boolean | 画布是否可以框选    |
 
-#### setBackgroundImage(url) 设置画布背景图片
+#### setBackgroundImage(options) 设置画布背景图片
 
-| params | Type   | Description  |
+| options | Type   | Description  |
 | ------ | ------ | ------------ |
-| url    | String | 背景图片 Url |
+| imgUrl    | String | 背景图片 Url |
+| angle    | Number | 旋转角度 |
+| opacity    | Number | 背景图片透明度 |
+| width    | Number | 默认为canvas宽度 背景图片宽度 |
+| height    | Number | 默认为canvas高度 背景图片高度 |
+| scaleX    | Number | 水平缩放 |
+| scaleY    | Number | 垂直缩放 |
+| crossOrigin    | String | 可为'anonymous',加载跨域图片 |
 
 #### renderAll() 重新渲染画布
 
