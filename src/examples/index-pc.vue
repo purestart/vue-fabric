@@ -88,7 +88,7 @@ export default {
     img.setAttribute('crossOrigin', 'anonymous');
     let that = this;
     img.onload = function () {
-          that.$refs.canvas.createImageByImg(img, { id: 'myImage', width:100,height:100, left: 10, top: 10 ,evented:false, selectable: false, crossOrigin:"anonymous"});
+          that.$refs.canvas.createImageByImg(img, { id: 'myImage', width:100,height:100, left: 10, top: 10 ,evented:true, selectable: true, crossOrigin:"anonymous"});
     }
     img.src = '/static/images/sticker1.png';
     this.$refs.canvas.setSelection(false)
@@ -99,11 +99,12 @@ export default {
       opacity: 1,
       scaleX:1.5
     }
-    this.$refs.canvas.setBackgroundImage(options);
+    // this.$refs.canvas.setBackgroundImage(options);
+    this.$refs.canvas.setBackgroundColor("#ffffff00");
     // https://s1.tuchong.com/content-image/201907/be4f3b7bc7b57305bf4c4c2d304d5ba8.jpg
     // this.$refs.canvas.createImageByImg('http://cdn2.jianshu.io/assets/web/logo-58fd04f6f0de908401aa561cda6a0688.png', { id: 'myImage', width: 100, height: 100, left: 10, top: 10 ,evented:false, selectable: false, crossOrigin:"anonymous"});
     // this.$refs.canvas.freeDrawConfig({isDrawingMode:this.isDrawingMode});
-    
+
   },
   methods: {
     changeDrawMore() {

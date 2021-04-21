@@ -181,10 +181,10 @@ export default {
     drawDottedline (options) {
       options = Object.assign({ x: 0, y: 0, x1: 10, y1: 10, color: '#B2B2B2', drawWidth: 2, offset: 6, empty: 3 }, options);
       let canvasObject = new fabric.Line([options.x, options.y, options.x1, options.y1], {
-        ...options,
         strokeDashArray: [options.offset, options.empty],
         stroke: options.color,
-        strokeWidth: options.drawWidth
+        strokeWidth: options.drawWidth,
+        ...options,
       });
       this.canvas.add(canvasObject);
       this.canvas.renderAll();
@@ -192,10 +192,10 @@ export default {
     drawArrowLine (options) {
       options = Object.assign({ x: 0, y: 0, x1: 0, y1: 0, color: '#B2B2B2', drawWidth: 2, fillColor: 'rgba(255,255,255,0)', theta: 35, headlen: 35 }, options);
       let canvasObject = new fabric.Path(this.drawArrowBase(options.x, options.y, options.x1, options.y1, options.theta, options.headlen), {
-        ...options,
         stroke: options.color,
         fill: options.fillColor,
-        strokeWidth: options.drawWidth
+        strokeWidth: options.drawWidth,
+        ...options,
       });
       this.canvas.add(canvasObject);
       this.canvas.renderAll();
@@ -287,8 +287,8 @@ export default {
     createRect (options) {
       options = Object.assign({ width: 0, height: 0, fillColor: 'rgba(255, 255, 255, 0)', left: 50, top: 50 }, options);
       let rect = new fabric.Rect({
+        fill: options.fillColor, // 填充的颜色
         ...options,
-        fill: options.fillColor // 填充的颜色
       });
       this.canvas.add(rect);
       this.canvas.renderAll();
@@ -296,10 +296,10 @@ export default {
     createCircle (options) {
       options = Object.assign({ left: 0, top: 0, radius: 30, fillColor: 'rgba(255, 255, 255, 0)', color: '#B2B2B2', drawWidth: 2 }, options);
       let defaultOption = {
-        ...options,
         fill: options.fillColor,
         strokeWidth: options.drawWidth,
-        stroke: options.color
+        stroke: options.color,
+        ...options,
       };
       let Circle = new fabric.Circle(defaultOption);
       this.canvas.add(Circle);
@@ -309,10 +309,10 @@ export default {
       options = Object.assign({ x: 0, y: 0, x1: 0, y1: 0, x2: 0, y2: 0, left: 100, top: 100, color: '#B2B2B2', drawWidth: 2, fillColor: 'rgba(255, 255, 255, 0)', id: 'triangle' }, options);
       var path = 'M ' + options.x + ' ' + options.y + ' L ' + options.x1 + ' ' + options.y1 + ' L ' + options.x2 + ' ' + options.y2 + ' z';
       let canvasObject = new fabric.Path(path, {
-        ...options,
         stroke: options.color,
         strokeWidth: options.drawWidth,
-        fill: options.fillColor
+        fill: options.fillColor,
+        ...options,
       });
       this.canvas.add(canvasObject);
       this.canvas.renderAll();
@@ -321,10 +321,10 @@ export default {
       options = Object.assign({ left: 100, top: 100, width: 50, height: 80, fillColor: 'rgba(255, 255, 255, 0)', color: '#B2B2B2', drawWidth: 2 }, options);
       // console.log(defaultOption);
       let triangle = new fabric.Triangle({
-        ...options,
         fill: options.fillColor,
         strokeWidth: options.drawWidth,
-        stroke: options.color
+        stroke: options.color,
+        ...options,
       });
       this.setContronVisibility(triangle);
       this.canvas.add(triangle);
@@ -333,9 +333,9 @@ export default {
     createLine (options) {
       options = Object.assign({ x: 0, y: 0, x1: 10, y1: 10, fillColor: 'rgba(255, 255, 255, 0)', strokeColor: '#B0B0B0' }, options);
       let line = new fabric.Line([options.x, options.y, options.x1, options.y1], {
-        ...options,
         fill: options.fillColor,
-        stroke: options.strokeColor
+        stroke: options.strokeColor,
+        ...options,
       });
       this.canvas.add(line);
       this.canvas.renderAll();
@@ -343,9 +343,9 @@ export default {
     createEllipse (options) {
       options = Object.assign({ rx: 100, ry: 200, fillColor: 'rgba(255, 255, 255, 0)', angle: 90, strokeColor: '#B0B0B0', strokeWidth: 3, left: 50, top: 50 }, options);
       var ellipse = new fabric.Ellipse({
-        ...options,
         fill: options.fillColor,
-        stroke: options.strokeColor
+        stroke: options.strokeColor,
+        ...options,
       });
       this.canvas.add(ellipse);
       this.canvas.renderAll();
@@ -367,8 +367,8 @@ export default {
       options.fillColor = options.fillColor?options.fillColor:options.fill;
       options = Object.assign({ fontSize: 14, fillColor: '#000000', registeObjectEvent: false, width: 50, left: 100, top: 100 }, options);
       var canvasObj = new fabric.Textbox(text, {
+        fill: options.fillColor,
         ...options,
-        fill: options.fillColor
       });
       // let arr = canvasObj._splitTextIntoLines(text);
       // console.log(arr);
@@ -742,9 +742,9 @@ export default {
       console.log(pathStr);
       var path = new fabric.Path(pathStr);
       path.set({
-        ...options,
         stroke: options.strokeColor,
-        fill: options.fillColor
+        fill: options.fillColor,
+        ...options,
       });
       this.canvas.add(path);
     }
